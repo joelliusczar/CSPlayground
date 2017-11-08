@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSPlayground", "CSPlayground\CSPlayground.csproj", "{2C8F7FDE-F849-4B3A-977F-816A84B4FE5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragAndDropPics", "DragAndDropPics\DragAndDropPics.csproj", "{46507FBB-EDFB-46CF-8DDD-610FD9A5367F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2C8F7FDE-F849-4B3A-977F-816A84B4FE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C8F7FDE-F849-4B3A-977F-816A84B4FE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C8F7FDE-F849-4B3A-977F-816A84B4FE5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46507FBB-EDFB-46CF-8DDD-610FD9A5367F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46507FBB-EDFB-46CF-8DDD-610FD9A5367F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46507FBB-EDFB-46CF-8DDD-610FD9A5367F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46507FBB-EDFB-46CF-8DDD-610FD9A5367F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
