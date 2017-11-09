@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using ComTypes = System.Runtime.InteropServices.ComTypes;
+using System.IO;
 
 namespace DragAndDropPics
 {
@@ -35,16 +36,43 @@ namespace DragAndDropPics
 
         private void treeView1_DragDrop(object sender, DragEventArgs e)
         {
-            const int CF_BITMAP = 2;
+            try
+            {
+                DLUsingURL(sender, e);
+                
+            }
+            catch (Exception ex)
+            {
+                if (ex != null) { }
+                MessageBox.Show("Arrrrrgggg!");
+            }
+        }
 
+        private void DLUsingURL(object sender, DragEventArgs e)
+        {
+            string dragType = "UniformResourceLocator";
+            if(e.Data.GetDataPresent(dragType))
+            {
+                MemoryStream dataStream = (MemoryStream)e.Data.GetData(dragType, true);
+                StreamReader reader = new StreamReader(dataStream);
+                string output = reader.ReadToEnd();
+            }
+
+        }
+
+        private void PInvokeWay(object sender, DragEventArgs e)
+        {
+            int cfFormat = DataFormats.GetFormat(DataFormats.Text).Id;
             ComTypes.FORMATETC formatEtc;
             ComTypes.STGMEDIUM stgMedium;
 
-            formatEtc = new ComTypes.FORMATETC();
-            formatEtc.cfFormat = CF_BITMAP;
-            formatEtc.dwAspect = ComTypes.DVASPECT.DVASPECT_CONTENT;
-            formatEtc.lindex = -1;
-            formatEtc.tymed = ComTypes.TYMED.TYMED_GDI;
+            formatEtc = new ComTypes.FORMATETC
+            {
+                cfFormat = (short)cfFormat,
+                dwAspect = ComTypes.DVASPECT.DVASPECT_CONTENT,
+                lindex = -1,
+                tymed = ComTypes.TYMED.TYMED_GDI
+            };
 
             ((ComTypes.IDataObject)e.Data).GetData(ref formatEtc, out stgMedium);
             Bitmap remotingImage = Bitmap.FromHbitmap(stgMedium.unionmember);
