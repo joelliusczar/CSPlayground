@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="BigHead.cs" />
     <Compile Include="ContravariantBindingResolver.cs" />
+    <Compile Include="Deadrace.cs" />
     <Compile Include="DumbMediator.cs" />
     <Compile Include="GenericPipeLineBehavior.cs" />
     <Compile Include="GenericRequestPostProcessor.cs" />

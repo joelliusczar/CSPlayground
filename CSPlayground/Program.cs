@@ -18,14 +18,8 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            DumbMediator dm = new DumbMediator();
-            dm.DumbMediate();
-            //IMediator m = BuildMediator();
-            //Task<string> task = m.Send(new Ping());
-            //task.Wait();
-            //Console.WriteLine(task.Result);
-            //Task t = m.Publish(new PingNotice());
-            //t.Wait();
+            Deadrace dr = new Deadrace();
+            dr.RunRace();
             Console.ReadKey();
         }
 
