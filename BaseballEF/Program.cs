@@ -18,8 +18,6 @@ namespace BaseballEF
             List<Player> players = new List<Player>();
             List<Team> teams = new List<Team>();
 
-
-
         }
 
         public static Mock<DbSet<T>> setupDbSet<T>(List<T> sourceList) where T: class
@@ -33,7 +31,7 @@ namespace BaseballEF
             dbSet.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(queryable.GetEnumerator());
             dbSet.Setup(d => d.Add(It.IsAny<T>())).Callback<T>(s => sourceList.Add(s));
             dbSet.Setup(d => d.Remove(It.IsAny<T>())).Callback<T>(s => sourceList.Remove(s));
-
+            //dbSet.Setup(d => d.Find(It.IsAny<object[]>())).Returns<object[]>(ids => sourceList.Find(t => t))
 
             return dbSet;
         }

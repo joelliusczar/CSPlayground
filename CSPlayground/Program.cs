@@ -12,8 +12,7 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            Deadrace dr = new Deadrace();
-            dr.RunRace();
+            Expressionisto.ExpressIt();
             Console.ReadKey();
         }
 
