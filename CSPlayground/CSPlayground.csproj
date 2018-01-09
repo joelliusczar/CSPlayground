@@ -46,6 +46,7 @@
     <Compile Include="BigHead.cs" />
     <Compile Include="Deadrace.cs" />
     <Compile Include="Expressionisto.cs" />
+    <Compile Include="Hooten.cs" />
     <Compile Include="Jenerica.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

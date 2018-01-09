@@ -98,6 +98,8 @@
     <Compile Include="GetTeamByPK_Result.cs">
       <DependentUpon>BaseballModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IFoo.cs" />
+    <Compile Include="Jock.cs" />
     <Compile Include="League.cs">
       <DependentUpon>BaseballModel.tt</DependentUpon>
     </Compile>

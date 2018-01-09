@@ -12,9 +12,10 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            Expressionisto.ExpressIt();
             Console.ReadKey();
         }
+
+        
 
 
         public static void JenericStuph()

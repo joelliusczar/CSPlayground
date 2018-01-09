@@ -13,11 +13,23 @@ namespace BaseballEF
     {
         public static void Main(string[] args)
         {
+            Mock<IFoo> macarana = new Mock<IFoo>();
+            macarana.Setup(m => m.InOut(It.IsAny<string>())).Returns("World");
+            macarana.Setup(m => m.FindTheTruth("Pizza?")).Returns(false);
+            macarana.Setup()
+
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine(macarana.Object.InOut("'Sup"));
+            Console.ReadKey();
+
+        }
+
+        private static void MockingDB()
+        {
             Mock<BaseballDBEntities1> mockContext = new Mock<BaseballDBEntities1>();
             List<League> leagues = new List<League>();
             List<Player> players = new List<Player>();
             List<Team> teams = new List<Team>();
-
         }
 
         public static Mock<DbSet<T>> setupDbSet<T>(List<T> sourceList) where T: class
@@ -25,6 +37,7 @@ namespace BaseballEF
             Mock<DbSet<T>> dbSet = new Mock<DbSet<T>>();
             IQueryable<T> queryable = sourceList.AsQueryable();
 
+            //dbSet.As<IQueryable<T>>().Setup(
             dbSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(queryable.Provider);
             dbSet.As<IQueryable<T>>().Setup(m => m.Expression).Returns(queryable.Expression);
             dbSet.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(queryable.ElementType);
@@ -32,6 +45,7 @@ namespace BaseballEF
             dbSet.Setup(d => d.Add(It.IsAny<T>())).Callback<T>(s => sourceList.Add(s));
             dbSet.Setup(d => d.Remove(It.IsAny<T>())).Callback<T>(s => sourceList.Remove(s));
             //dbSet.Setup(d => d.Find(It.IsAny<object[]>())).Returns<object[]>(ids => sourceList.Find(t => t))
+            
 
             return dbSet;
         }

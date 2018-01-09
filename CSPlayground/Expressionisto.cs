@@ -7,11 +7,92 @@ using System.Linq.Expressions;
 
 namespace CSPlayground
 {
+    internal class ExpService
+    {
+        public string Name { get; set; }
+
+        public string Namespace { get; set; }
+    }
+
     public class Expressionisto
     {
         public static void ExpressIt()
         {
-            FibonacciExpressionTree();
+           
+
+            //TorbjornsOtherExample();
+
+        }
+
+        private static void PrimitiveTorbjorns()
+        {
+            Expression<Func<int, int>> sel1 = s => s * 2;
+            Expression<Func<int, int>> sel2 = s => s * 3;
+
+            ConstantExpression val1 = Expression.Constant(4);
+            ConstantExpression val2 = Expression.Constant(6);
+
+            Expression e1 = Expression.Equal(sel1.Body, val1);
+            Expression e2 = Expression.Equal(sel2.Body, val2);
+            BinaryExpression andExp = Expression.AndAlso(e1, e2);
+
+            ParameterExpression argParam = Expression.Parameter(typeof(int), "s");
+            Expression<Func<int, bool>> callBack = Expression.Lambda<Func<int, bool>>(andExp, argParam);
+            bool result = callBack.Compile()(2);
+            Console.WriteLine(result);
+        }
+
+        private static void TorbjornsOtherExample()
+        {
+            Expression<Func<ExpService, string>> sel1 = s => s.Name;
+            Expression<Func<ExpService, string>> sel2 = s => s.Namespace;
+
+            ConstantExpression val1 = Expression.Constant("Modules");
+            ConstantExpression val2 = Expression.Constant("Namespace");
+
+            Expression e1 = Expression.Equal(sel1.Body, val1);
+            Expression e2 = Expression.Equal(sel2.Body, val2);
+            BinaryExpression andExp = Expression.AndAlso(e1, e2);
+
+            ParameterExpression argParam = Expression.Parameter(typeof(ExpService), "s");
+            Expression<Func<ExpService, bool>> callBack = Expression.Lambda<Func<ExpService, bool>>(andExp, argParam);
+
+            bool result = callBack.Compile()(new ExpService() { Name = "a", Namespace = "B" }); ;
+            Console.WriteLine(result);
+        }
+
+        private static void InvokeStuff()
+        {
+            Expression<Func<int, int>> square = num => num * num;
+            InvocationExpression invoked = Expression.Invoke(square, Expression.Constant(3));
+            var result = Expression.Lambda<Func<int>>(invoked).Compile()();
+
+            Console.WriteLine(result);
+        }
+
+        private static void TorbjornsCode()
+        {
+            Expression<Func<ExpService, string>> sel1 = s => s.Name;
+            Expression<Func<ExpService, string>> sel2 = srv => srv.Namespace;
+
+            ConstantExpression val1 = Expression.Constant("Modules");
+            ConstantExpression val2 = Expression.Constant("Namespace");
+
+            Expression<Func<ExpService, bool>> lambda = m => true;
+
+            ParameterExpression modelParameter = lambda.Parameters.First();
+
+            {
+                InvocationExpression invokedExpr = Expression.Invoke(sel1, modelParameter);
+                BinaryExpression binaryExpression = Expression.Equal(invokedExpr, val1);
+                lambda = Expression.Lambda<Func<ExpService, bool>>(Expression.AndAlso(binaryExpression, lambda.Body), lambda.Parameters);
+            }
+
+            {
+                InvocationExpression invokedExpr = Expression.Invoke(sel2, modelParameter);
+                BinaryExpression binaryExpression = Expression.Equal(invokedExpr, val2);
+                lambda = Expression.Lambda<Func<ExpService, bool>>(Expression.AndAlso(binaryExpression, lambda.Body), lambda.Parameters);
+            }
         }
 
         private static void IncrementExpression()
