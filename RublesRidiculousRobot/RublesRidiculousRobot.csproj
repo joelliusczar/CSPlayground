@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{88B3ED87-EEC8-417F-B3CE-3F395EB38066}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>RublesRidiculousRobot</RootNamespace>
+    <AssemblyName>RublesRidiculousRobot</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adderbrutes.cs" />
+    <Compile Include="AssemblerStuffBang.cs" />
+    <Compile Include="BigBadFilterProvider.cs" />
+    <Compile Include="DynamicFilterAbstractBase.cs" />
+    <Compile Include="DynamikKodeFaktory.cs" />
+    <Compile Include="FilterCompilationUnit.cs" />
+    <Compile Include="IFilter.cs" />
+    <Compile Include="KompilashunUnit.cs" />
+    <Compile Include="KompiyalStuff.cs" />
+    <Compile Include="kontextStuff\BiewModelPhorAddrivude.cs" />
+    <Compile Include="kontextStuff\IMerriamWebsterOfTypes.cs" />
+    <Compile Include="kontextStuff\ModelKontext.cs" />
+    <Compile Include="kontextStuff\MWExtend.cs" />
+    <Compile Include="KweschunareModel.cs" />
+    <Compile Include="KwestionaireModelFilterInfo.cs" />
+    <Compile Include="KwoteModel.cs" />
+    <Compile Include="KwoteModelFilterInfo.cs" />
+    <Compile Include="LanguageIntepreter.cs" />
+    <Compile Include="ListExtend.cs" />
+    <Compile Include="MootaDootaDefinishin.cs" />
+    <Compile Include="MootaDootaFilterCollection.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MetadataFilterInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dataoutput.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
