@@ -12,10 +12,31 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
+            DoActionStuff();
             Console.ReadKey();
         }
 
-        
+        public static void DoActionStuff()
+        {
+            ActionBuilder ab = new ActionBuilder();
+            Action a = ab.BuildAction();
+            a();
+            ab.DoSomeActionyStuff();
+            Action a2 = ab.GetTheDevilsIncrementer();
+            a2();
+            a2();
+            a2();
+        }
+
+        public static void CastingStuff()
+        {
+            Hooten hey = new Hooten();
+            DeHooten heHey = hey as DeHooten;
+
+            heHey = new DeHooten();
+            Hooten woah = heHey as Hooten;
+            woah.HootYo();
+        }
 
 
         public static void JenericStuph()

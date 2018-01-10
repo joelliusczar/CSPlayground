@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace CSPlayground
 {
-    public  class Hooten
+    public class DeHooten: Hooten
     {
-        public int GetThatNumba(int num)
+        public int HootNum()
         {
-            return num * 2;
+            return 5;
         }
 
-        public virtual void HootYo()
+        public override void HootYo()
         {
-            Console.WriteLine("og way");
+            Console.WriteLine( "new way");
         }
     }
 }

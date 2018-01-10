@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorStuff", "MediatorSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RublesRidiculousRobot", "RublesRidiculousRobot\RublesRidiculousRobot.csproj", "{88B3ED87-EEC8-417F-B3CE-3F395EB38066}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakesNews", "FakesNews\FakesNews.csproj", "{EE906ECF-3031-471E-A90B-9786E47DABCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{88B3ED87-EEC8-417F-B3CE-3F395EB38066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88B3ED87-EEC8-417F-B3CE-3F395EB38066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88B3ED87-EEC8-417F-B3CE-3F395EB38066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE906ECF-3031-471E-A90B-9786E47DABCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE906ECF-3031-471E-A90B-9786E47DABCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE906ECF-3031-471E-A90B-9786E47DABCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE906ECF-3031-471E-A90B-9786E47DABCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

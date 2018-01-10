@@ -16,7 +16,7 @@ namespace BaseballEF
             Mock<IFoo> macarana = new Mock<IFoo>();
             macarana.Setup(m => m.InOut(It.IsAny<string>())).Returns("World");
             macarana.Setup(m => m.FindTheTruth("Pizza?")).Returns(false);
-            macarana.Setup()
+            //macarana.Setup()
 
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine(macarana.Object.InOut("'Sup"));
