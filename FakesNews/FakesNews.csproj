@@ -43,14 +43,21 @@
   <ItemGroup>
     <Compile Include="AnotherNeedlessLayer.cs" />
     <Compile Include="Condition.cs" />
+    <Compile Include="DefaultValue.cs" />
+    <Compile Include="DefaultValueProvider.cs" />
+    <Compile Include="EmptyDefaultValueProvider.cs" />
     <Compile Include="ExpressionExtension.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FakeNews.cs" />
     <Compile Include="FakeNews.Generic.cs" />
+    <Compile Include="Guard.cs" />
     <Compile Include="IMatcher.cs" />
     <Compile Include="ISetup.cs" />
+    <Compile Include="LookupOrFallbackDefaultValueProvider.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="MatcherFactory.cs" />
     <Compile Include="MatchExpression.cs" />
+    <Compile Include="FakeBehavior.cs" />
     <Compile Include="MustardCall.cs" />
     <Compile Include="MustardCall.Generic.cs" />
     <Compile Include="MustardCallReturn.cs" />

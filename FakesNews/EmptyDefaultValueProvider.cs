@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace FakesNews
 {
-    public interface ISetup<T,T2>
+    public class EmptyDefaultValueProvider: LookupOrFallbackDefaultValueProvider
     {
-    }
-
-    public interface ISetup<TFake>
-    {
-
     }
 }

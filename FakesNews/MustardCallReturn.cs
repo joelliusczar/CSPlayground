@@ -8,9 +8,10 @@ using System.Reflection;
 
 namespace FakesNews
 {
-    public class MustardCallReturn<T,TResult>: ISetup<T,TResult>
+    public class MustardCallReturn<T,TResult>: MustardCall, ISetup<T,TResult>
     {
-        public MustardCallReturn(FakeNews fake,Condition condition,Expression ogExpression,MethodInfo method,params Expression[] arguments)
+        public MustardCallReturn(FakeNews fake,Condition condition,Expression ogExpression,MethodInfo mustard,params Expression[] arguments)
+            :base(fake,condition,ogExpression,mustard,arguments)
         { }
     }
 }

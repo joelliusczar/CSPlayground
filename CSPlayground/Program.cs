@@ -12,7 +12,7 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            DoActionStuff();
+            Statica.StringAlongAsyncSingle();
             Console.ReadKey();
         }
 

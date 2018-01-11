@@ -18,8 +18,8 @@ namespace CSPlayground
     {
         public static void ExpressIt()
         {
-           
 
+            FibonacciExpressionTree();
             //TorbjornsOtherExample();
 
         }

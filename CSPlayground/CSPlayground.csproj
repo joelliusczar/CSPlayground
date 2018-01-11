@@ -52,6 +52,7 @@
     <Compile Include="Jenerica.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statica.cs" />
     <Compile Include="Synchronicity.cs" />
   </ItemGroup>
   <ItemGroup>

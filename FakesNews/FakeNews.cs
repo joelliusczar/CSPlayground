@@ -10,7 +10,10 @@ namespace FakesNews
 {
     public class FakeNews
     {
-        public static MustardCallReturn<T, TResult> Setup2<T, TResult>(FakeNews<T> fake, Expression<Func<T, TResult>> expresso, Object condition)
+
+        public DefaultValueProvider DefaultValueProvider { get; set; }
+        public FakeBehavior behavior { get; set; }
+        public static MustardCallReturn<T, TResult> Setup<T, TResult>(FakeNews<T> fake, Expression<Func<T, TResult>> expresso, Condition condition)
         {
             return AnotherNeedlessLayer.CallSomething(SetupNeedlessLayerStuff, fake, expresso, condition);
         }
@@ -20,6 +23,8 @@ namespace FakesNews
             (Expression expr,MethodInfo method,Expression[] args) = expresso.GetCallInfo(fake);
 
             MustardCallReturn<T, TResult> setup = new MustardCallReturn<T, TResult>(fake,condition,expresso,method,args);
+
+            return setup;
         }
     }
 }

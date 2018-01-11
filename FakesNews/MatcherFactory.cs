@@ -27,7 +27,12 @@ namespace FakesNews
             {
                 MethodCallExpression call = (MethodCallExpression)expression;
 
+                using (SmoothContext context = new SmoothContext())
+                {
+                    Expression.Lambda<Action>(call).Compile().Invoke();
 
+
+                }
             }
             
         }

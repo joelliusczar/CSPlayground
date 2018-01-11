@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace FakesNews
 {
-    public interface ISetup<T,T2>
+    public enum FakeBehavior
     {
-    }
-
-    public interface ISetup<TFake>
-    {
-
+        Strict,
+        Loose,
+        Default = Loose
     }
 }
