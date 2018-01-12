@@ -12,8 +12,14 @@ namespace FakesNews
 
         public static Expression PartialEval(Expression expresso)
         {
-
+            return PartialEval(expresso, e => e.NodeType != ExpressionType.Parameter);
         }
+
+        public static Expression PartialEval(Expression expresso,Func<Expression,bool> fnCanBeEvaluated)
+        {
+            return new SubTreeEvaluator(new Nominator(fnCanBeEvaluated).Nominate(expresso)).Visit(expresso);
+        }
+
     }
 
     public class SubTreeEvaluator: ExpressionVisitor
@@ -24,6 +30,32 @@ namespace FakesNews
         {
             this._candidates = candidates;
         }
+
+
+        public override Expression Visit(Expression node)
+        {
+            if(node == null)
+            {
+                return null;
+            }
+            if(this._candidates.Contains(node))
+            {
+                return Evaluate(node);
+            }
+            return base.Visit(node);
+        }
+
+        private static Expression Evaluate(Expression node)
+        {
+            if(node.NodeType == ExpressionType.Constant)
+            {
+                return node;
+            }
+            LambdaExpression lambda = Expression.Lambda(node);
+            Delegate fn = lambda.Compile();
+            return Expression.Constant(fn.DynamicInvoke(null), node.Type);
+        }
+
     }
 
     public class Nominator: ExpressionVisitor
