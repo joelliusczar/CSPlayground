@@ -54,6 +54,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statica.cs" />
     <Compile Include="Synchronicity.cs" />
+    <Compile Include="Useless.cs" />
+    <Compile Include="UselessAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

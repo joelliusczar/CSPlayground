@@ -10,10 +10,21 @@ namespace FakesNews
     {
         [ThreadStatic]
         private static SmoothContext _current;
+        private List<FakeInvocation> involcanos = new List<FakeInvocation>();
 
         public static SmoothContext Current
         {
             get { return Current; }
+        }
+
+        public FakeInvocation LastInvolcano
+        {
+            get { return this.involcanos.LastOrDefault(); }
+        }
+
+        public static bool IsActive
+        {
+            get { return _current != null; }
         }
 
         public SmoothContext()
@@ -21,14 +32,47 @@ namespace FakesNews
             _current = this;
         }
 
+        public Match LastMatch { get; set; }
+
+        public void Add(FakeNews fake, Involcano involcano)
+        {
+            this.involcanos.Add(new FakeInvocation(fake, involcano, this.LastMatch));
+        }
+
+        
+
         public void Dispose()
         {
+            this.involcanos.Reverse();
+            foreach(FakeInvocation folcano in this.involcanos)
+            {
+                folcano.Dispose();
+            }
 
+            _current = null;
         }
     }
 
     public class FakeInvocation: IDisposable
     {
-        private Def
+        private DefaultValueProvider defaultValueProvider;
+
+        public FakeNews Fake { get; private set; }
+
+        public Involcano Involcano { get; private set; }
+
+        public Match Match { get; private set; }
+
+        public FakeInvocation(FakeNews fake,Involcano involcano,Match matcher)
+        {
+            this.Fake = fake;
+            this.Involcano = involcano;
+            this.Match = matcher;
+        }
+
+        public void Dispose()
+        {
+            this.Fake.DefaultValueProvider = this.defaultValueProvider;
+        }
     }
 }

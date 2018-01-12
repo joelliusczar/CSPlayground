@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Reflection;
 using System.IO;
 
 namespace CSPlayground
@@ -12,7 +12,7 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            Statica.StringAlongAsyncSingle();
+            ReflectionStuff.RunThatStuffIntoAMirror();
             Console.ReadKey();
         }
 
@@ -27,6 +27,8 @@ namespace CSPlayground
             a2();
             a2();
         }
+
+
 
         public static void CastingStuff()
         {

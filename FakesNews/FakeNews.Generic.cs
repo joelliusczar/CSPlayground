@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace FakesNews
 {
@@ -45,7 +46,17 @@ namespace FakesNews
         {
             Guard.ThrowIfCantBeFaked(typeof(T));
 
-            
+            if(this.constructorArguments.Length > 0)
+            {
+                if(typeof(T).GetTypeInfo().IsInterface)
+                {
+                    throw new ArgumentException();
+                }
+                if(typeof(T).IsDelegate())
+                {
+                    throw new ArgumentException();
+                }
+            }
         }
 
 

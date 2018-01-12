@@ -46,12 +46,14 @@
     <Compile Include="DefaultValue.cs" />
     <Compile Include="DefaultValueProvider.cs" />
     <Compile Include="EmptyDefaultValueProvider.cs" />
+    <Compile Include="Evaluator.cs" />
     <Compile Include="ExpressionExtension.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FakeNews.cs" />
     <Compile Include="FakeNews.Generic.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="IMatcher.cs" />
+    <Compile Include="Involcano.cs" />
     <Compile Include="ISetup.cs" />
     <Compile Include="LookupOrFallbackDefaultValueProvider.cs" />
     <Compile Include="Match.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="MustardCall.Generic.cs" />
     <Compile Include="MustardCallReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlothfulEvalMatchers.cs" />
     <Compile Include="SmoothContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

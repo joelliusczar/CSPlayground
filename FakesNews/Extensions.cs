@@ -22,5 +22,10 @@ namespace FakesNews
         {
             return typeToFake.IsInterface|| typeToFake.IsAbstract || (typeToFake.IsClass && !typeToFake.IsSealed);
         }
+
+        public static bool IsDelegate(this Type t)
+        {
+            return t.GetTypeInfo().IsSubclassOf(typeof(Delegate));
+        }
     }
 }

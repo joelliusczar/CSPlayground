@@ -30,8 +30,15 @@ namespace FakesNews
                 using (SmoothContext context = new SmoothContext())
                 {
                     Expression.Lambda<Action>(call).Compile().Invoke();
+                    if (context.LastMatch != null)
+                    {
+                        return context.LastMatch;
+                    }
 
+                }
 
+                {
+                    //return new 
                 }
             }
             
