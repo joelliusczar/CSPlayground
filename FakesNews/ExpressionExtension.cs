@@ -21,5 +21,10 @@ namespace FakesNews
             MethodCallExpression methodCall = expression.Body as MethodCallExpression;
             return methodCall;
         }
+
+        public static Expression PartialEval(this Expression expresso)
+        {
+            return Evaluator.PartialEval(expresso);
+        }
     }
 }

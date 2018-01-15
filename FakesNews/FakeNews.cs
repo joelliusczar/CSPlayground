@@ -24,7 +24,24 @@ namespace FakesNews
 
             MustardCallReturn<T, TResult> setup = new MustardCallReturn<T, TResult>(fake,condition,expresso,method,args);
 
+
+
             return setup;
+        }
+
+        private static FakeNews GetTargetNews(Expression smoothExpression,FakeNews fake)
+        {
+            if(smoothExpression is ParameterExpression)
+            {
+                return fake;
+            }
+
+            Expression targetExpr = SmoothFakeNewsVisitor.Accept(smoothExpression, fake);
+            Expression<Func<FakeNews>> targetLambda = Expression.Lambda<Func<FakeNews>>(Expression.Convert(targetExpr, typeof(FakeNews)));
+
+            FakeNews targetObject = targetLambda.Compile()();
+
+            return targetObject;
         }
     }
 }

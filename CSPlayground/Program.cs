@@ -12,7 +12,7 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            ReflectionStuff.RunThatStuffIntoAMirror();
+            IsStuff();
             Console.ReadKey();
         }
 
@@ -48,6 +48,21 @@ namespace CSPlayground
             Type jenericType = jPlurType.GetGenericTypeDefinition().MakeGenericType(new[] { typeof(String),typeof(BigHead),typeof(int) });
             JenericaPluralis<object,object,object> obj = (JenericaPluralis<object, object, object>)Activator.CreateInstance(jenericType);
 
+        }
+
+        public static void IsStuff()
+        {
+            object dh = new Catapult();
+
+            if(dh is Catapult c)
+            {
+                c.Smack();
+
+                if(c.CalcRange(0) is 100)
+                {
+                    Console.WriteLine("it is!");
+                }
+            }
         }
 
 

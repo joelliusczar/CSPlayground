@@ -36,7 +36,9 @@ namespace FakesNews
                 }
                 else
                 {
-                    parameter.Is
+                    bool isParamArray = parameter.IsDefined(typeof(ParamArrayAttribute), true);
+                    this.argumentMatchers[i] = MatcherFactory.CreateMatcher(argument, isParamArray);
+
                 }
             }
 

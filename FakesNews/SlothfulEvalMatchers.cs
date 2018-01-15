@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace FakesNews
 {
-    public class SlothfulEvalMatcher
+    public class SlothfulEvalMatcher: IMatcher
     {
         private Expression _expresso;
 
