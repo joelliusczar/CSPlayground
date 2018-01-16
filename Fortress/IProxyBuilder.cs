@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FakesNews
+namespace Fortress
 {
-    public interface IFaked<T>: IFaked
-    { }
-
-    public interface IFaked
+    public interface IProxyBuilder
     {
     }
 }

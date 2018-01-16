@@ -8,11 +8,17 @@ using System.Reflection;
 
 namespace FakesNews
 {
-    public class FakeNews
+    public abstract class FakeNews
     {
 
         public DefaultValueProvider DefaultValueProvider { get; set; }
         public FakeBehavior behavior { get; set; }
+        public virtual SetupCollection Setups { get; }
+        public virtual InvolcanoCollection Involcanos { get; }
+        public abstract List<Type> AdditionalInterfaces { get; }
+
+        public object Object => this.OnGetObject();
+
         public static MustardCallReturn<T, TResult> Setup<T, TResult>(FakeNews<T> fake, Expression<Func<T, TResult>> expresso, Condition condition)
         {
             return AnotherNeedlessLayer.CallSomething(SetupNeedlessLayerStuff, fake, expresso, condition);
@@ -43,5 +49,7 @@ namespace FakesNews
 
             return targetObject;
         }
+
+        protected abstract object OnGetObject();
     }
 }

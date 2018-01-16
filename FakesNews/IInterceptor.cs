@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FakesNews
 {
-    public interface IFaked<T>: IFaked
-    { }
-
-    public interface IFaked
+    public interface IInterceptor
     {
+        void Intercept(Involcano involcano);
     }
 }

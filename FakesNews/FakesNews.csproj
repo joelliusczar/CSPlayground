@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FortressProxyFactory.cs" />
+    <Compile Include="IInterceptor.cs" />
+    <Compile Include="ProxyFactory.cs" />
     <Compile Include="AnotherNeedlessLayer.cs" />
     <Compile Include="Condition.cs" />
     <Compile Include="ConstantMatcher.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="IFaked.cs" />
     <Compile Include="IMatcher.cs" />
     <Compile Include="Involcano.cs" />
+    <Compile Include="InvolcanoCollection.cs" />
     <Compile Include="ISetup.cs" />
     <Compile Include="LookupOrFallbackDefaultValueProvider.cs" />
     <Compile Include="Match.cs" />
@@ -68,9 +72,16 @@
     <Compile Include="MustardCall.Generic.cs" />
     <Compile Include="MustardCallReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetupCollection.cs" />
     <Compile Include="SlothfulEvalMatchers.cs" />
     <Compile Include="SmoothContext.cs" />
     <Compile Include="SmoothFakeNewsVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fortress\Fortress.csproj">
+      <Project>{d20387f3-c74f-46fb-a652-1c0533870b7a}</Project>
+      <Name>Fortress</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

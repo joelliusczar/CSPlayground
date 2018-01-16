@@ -12,6 +12,15 @@ namespace FakesNews
     {
 
         private object[] constructorArguments;
+        private SetupCollection _setups;
+        private InvolcanoCollection _involcanos;
+        private T _instance;
+        private List<Type> _additionalInterfaces;
+
+        public override SetupCollection Setups => this._setups;
+        public override InvolcanoCollection Involcanos => this._involcanos;
+
+        public override List<Type> AdditionalInterfaces => this._additionalInterfaces;
 
         public FakeNews()
             :this(FakeBehavior.Default)
@@ -33,6 +42,9 @@ namespace FakesNews
             }
 
             this.DefaultValueProvider = DefaultValueProvider.Empty;
+            this._setups = new SetupCollection();
+            this._involcanos = new InvolcanoCollection();
+            this._additionalInterfaces = new List<Type>();
             //more stuff
             this.CheckParameters();
         }
@@ -59,6 +71,35 @@ namespace FakesNews
             }
         }
 
+        protected override object OnGetObject()
+        {
+            if(this._instance == null)
+            {
+                this.InitializeInstance();
+            }
+            return this._instance;
+        }
 
+        private void InitializeInstance()
+        {
+            AnotherNeedlessLayer.CallAction(InitializeInstanceDecorated);
+        }
+
+        private void InitializeInstanceDecorated()
+        {
+            int iCount = this.AdditionalInterfaces.Count;
+            Type[] interfaces = new Type[1 + iCount];
+            interfaces[0] = typeof(IFaked<T>);
+            this.AdditionalInterfaces.CopyTo(0, interfaces, 1, iCount);
+
+            if (false) //IsDelegateMock
+            {
+                //put stuff here. 
+            }
+            else
+            {
+
+            }
+        }
     }
 }
