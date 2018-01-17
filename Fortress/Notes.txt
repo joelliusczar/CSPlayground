@@ -1,0 +1,3 @@
+﻿Virual in BaseProxyGenerator subclass
+Expression vs emitter stuff
+GetType() vs itself

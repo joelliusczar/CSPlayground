@@ -17,6 +17,11 @@ namespace Fortress
             get { return mixinsImpl; }
         }
 
+        public IEnumerable<Type> MixinInterfaces
+        {
+            get { return this.mixinPositions.Keys; }
+        }
+
         public MixinData(IEnumerable<object> mixinInstances)
         {
             if(mixinInstances != null)
@@ -52,6 +57,11 @@ namespace Fortress
                 }
                 
             }
+        }
+
+        public bool ContainsMixin(Type mixinInterfaceType)
+        {
+            return this.mixinPositions.ContainsKey(mixinInterfaceType);
         }
     }
 }

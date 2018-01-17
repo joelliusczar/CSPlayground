@@ -96,5 +96,18 @@ namespace Fortress
             }
         }
 
+        protected void AddMappingNoCheck(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
+        {
+            mapping.Add(@interface, implementer);
+        }
+
+        protected void AddMapping(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
+        {
+            if(!mapping.ContainsKey(@interface))
+            {
+                this.AddMappingNoCheck(@interface, implementer, mapping);
+            }
+        }
+
     }
 }

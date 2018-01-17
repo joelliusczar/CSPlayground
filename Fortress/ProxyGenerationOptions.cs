@@ -14,6 +14,23 @@ namespace Fortress
         public Type BaseTypeForInterfaceProxy { get; set; }
         public IProxyGenerationHook Hook { get; set; }
 
+        public bool HasMixins
+        {
+            get { return mixins != null && mixins.Count != 0; }
+        }
+
+        public MixinData MixinData
+        {
+            get
+            {
+                if(this.mixinData == null)
+                {
+                    throw new InvalidOperationException("There is no mixin data! call Initialize first");
+                }
+                return this.mixinData;
+            }
+        }
+
         public ProxyGenerationOptions(IProxyGenerationHook hook)
         {
             this.BaseTypeForInterfaceProxy = typeof(object);

@@ -9,6 +9,11 @@ namespace Fortress
 {
     public static class TypeUtil
     {
+        public static Type[] GetAllInterfaces(this Type type)
+        {
+            return GetAllInterfaces(new[] { type });
+        }
+
         public static Type[] GetAllInterfaces(params Type[] types)
         {
             if(types == null)
@@ -34,9 +39,9 @@ namespace Fortress
                 }
 
                 Type[] innerInterfaces = t.GetInterfaces();
-                for(int i = 0;i < innerInterfaces.Length;i++)
+                for(int j = 0;j < innerInterfaces.Length;ji++)
                 {
-                    Type @interface = innerInterfaces[i];
+                    Type @interface = innerInterfaces[j];
                     interfaces.Add(@interface);
                 }
             }
