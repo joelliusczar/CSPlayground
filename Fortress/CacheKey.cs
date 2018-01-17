@@ -15,7 +15,10 @@ namespace Fortress
         private readonly Type type;
         public CacheKey(MemberInfo target,Type type, Type[] interfaces, ProxyGenerationOptions options)
         {
-
+            this.target = target;
+            this.type = type;
+            this.interfaces = interfaces ?? Type.EmptyTypes;
+            this.options = options;
         }
     }
 }

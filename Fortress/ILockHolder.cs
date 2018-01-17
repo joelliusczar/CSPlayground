@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fortress
 {
-    public interface INamingScope
+    public interface ILockHolder: IDisposable
     {
-        string GetUniqueName(string suggestedName);
-        INamingScope SafeSubScope();
+        bool LockAcquired { get;  }
     }
 }

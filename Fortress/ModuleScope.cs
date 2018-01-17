@@ -15,9 +15,21 @@ namespace Fortress
         private readonly string weakAssemblyName;
         private readonly string weakModulePath;
         private readonly INamingScope namingScope;
+        private readonly Lock cacheLock = Lock.Create();
+        private readonly Dictionary<CacheKey, Type> typeCache = new Dictionary<CacheKey, Type>();
 
         public static readonly string DEFAULT_ASM_NAME = "DynProxGenAsm";
         public static readonly string DEFAULT_FILE_NAME = "FortressProx.dll";
+
+        public Lock Lock
+        {
+            get { return cacheLock; }
+        }
+
+        public INamingScope NamingScope
+        {
+            get { return this.namingScope; }
+        }
 
         public ModuleScope()
             :this(false,false)
@@ -46,6 +58,19 @@ namespace Fortress
             this.strongModulePath = strongModulePath;
             this.weakAssemblyName = weakAssemblyName;
             this.weakModulePath = weakModulePath;
+        }
+
+        public Type GetFromCache(CacheKey key)
+        {
+            Type type;
+            this.typeCache.TryGetValue(key, out type);
+            return type;
+
+        }
+
+        public void RegisterInCache(CacheKey key, Type type)
+        {
+            this.typeCache[key] = type;
         }
     }
 }

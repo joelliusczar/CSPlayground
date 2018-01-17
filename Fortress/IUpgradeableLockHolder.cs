@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fortress
 {
-    public interface INamingScope
+    public interface IUpgradeableLockHolder: ILockHolder
     {
-        string GetUniqueName(string suggestedName);
-        INamingScope SafeSubScope();
+        ILockHolder Upgrade();
+        ILockHolder Upgrade(bool waitForLock);
     }
 }

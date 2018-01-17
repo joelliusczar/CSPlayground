@@ -25,6 +25,9 @@ namespace Fortress
             ProxyGenerationOptions = options;
 
             interfaces = TypeUtil.GetAllInterfaces(interfaces);
+            CacheKey cacheKey = new CacheKey(proxyTargetType, this.targetType, interfaces, options);
+
+
 
         }
 

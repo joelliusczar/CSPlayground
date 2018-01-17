@@ -12,6 +12,7 @@ namespace Fortress
         private ModuleScope scope;
         private ProxyGenerationOptions proxyGenerationOptions;
 
+
         protected ModuleScope Scope
         {
             get { return scope; }
@@ -62,6 +63,36 @@ namespace Fortress
             foreach(Type t in types)
             {
                 CheckNotGenericTypeDefinition(t, argumentName);
+            }
+        }
+
+        protected Type GetFromCache(CacheKey key)
+        {
+            return this.Scope.GetFromCache(key);
+        }
+
+        protected void AddToCache(CacheKey key, Type type)
+        {
+            this.Scope.RegisterInCache(key, type);
+        }
+
+        protected Type ObtainProxyType(CacheKey cacheKey,Func<string,INamingScope,Type> factory)
+        {
+            Type cacheType;
+            using (IUpgradeableLockHolder locker = this.Scope.Lock.ForReadingUpgradeable())
+            {
+                cacheType = this.GetFromCache(cacheKey);
+                if(cacheType != null)
+                {
+                    return cacheType;
+                }
+                //Method: Ensure Equals and HashCode are overriden Accepts ProxyGenerationOptions
+                string name = this.Scope.NamingScope.GetUniqueName("Fortress.Proxies." + this.targetType.Name + "Proxy");
+                Type proxyType =  factory(name, this.Scope.NamingScope.SafeSubScope());
+
+                locker.Upgrade();
+                this.AddToCache(cacheKey, proxyType);
+                return proxyType;
             }
         }
 
