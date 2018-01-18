@@ -14,6 +14,11 @@ namespace Fortress
             get { return false; }
         }
 
+        protected virtual string GeneratorType
+        {
+            get { return ProxyTypeConstants.InterfaceWithTarget; }
+        }
+
         public InterfaceProxyWithTargetGenerator(ModuleScope scope,Type @interface)
             :base(scope,@interface)
         {
@@ -39,6 +44,11 @@ namespace Fortress
         protected virtual Type GenerateType(string typeName, Type proxyTargetType, Type[] interfaces, INamingScope namingScope)
         {
             IEnumerable<ITypeContributor> contributors;
+            IEnumerable<Type> allInterfaces = this.GetTypeImplimentingMapping(interfaces, proxyTargetType, out contributors, namingScope);
+
+            ClassEmitter emitter;
+            FieldReference interceptorsField;
+
 
         }
 
@@ -91,11 +101,30 @@ namespace Fortress
                 this.AddMappingNoCheck(@interface, additionalInterfacesContributor, typeImplementerMapping);
             }
 
-
+            InterfaceProxyInstanceContributor instance = new InterfaceProxyInstanceContributor(targetType, this.GeneratorType, interfaces);
             try
             {
-                this.AddMappingNoCheck(typeof(IProxyTargetAccessor),)
+                this.AddMappingNoCheck(typeof(IProxyTargetAccessor),instance,typeImplementerMapping); 
             }
+            catch(ArgumentException)
+            {
+                HandleExplicitlyPassedProxyTargetAccessor(targetInterfaces, additionalInterfaces);
+            }
+
+            contributors = new List<ITypeContributor>
+            {
+                target,
+                additionalInterfacesContributor,
+                mixins,
+                instance
+            };
+            return typeImplementerMapping.Keys;
+
+        }
+
+        protected virtual Type Init(string typeName, out ClassEmitter emitter, Type proxyTargetType, out FieldReference interceptorField, IEnumerable<Type> interfaces)
+        {
+            Type baseType = this.ProxyGenerationOptions.BaseTypeForInterfaceProxy;
 
         }
 

@@ -96,6 +96,23 @@ namespace Fortress
             }
         }
 
+        protected void HandleExplicitlyPassedProxyTargetAccessor(ICollection<Type> targetInterfaces, ICollection<Type> additionalInterfaces)
+        {
+            //don't care
+
+            string interfaceName = typeof(IProxyTargetAccessor).ToString();
+            string message;
+            if (targetInterfaces.Contains(typeof(IProxyTargetAccessor)))
+            {
+                message = string.Format("Are you trying to proxy an existing proxy?");
+            }
+            else if (this.ProxyGenerationOptions.MixinData.ContainsMixin(typeof(IProxyTargetAccessor)))
+            {
+                this.ProxyGenerationOptions.MixinData.GetMixinInstance(typeof(IProxyTargetAccessor));
+            }
+            else { }
+        }
+
         protected void AddMappingNoCheck(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
         {
             mapping.Add(@interface, implementer);
@@ -107,6 +124,15 @@ namespace Fortress
             {
                 this.AddMappingNoCheck(@interface, implementer, mapping);
             }
+        }
+
+        protected virtual ClassEmitter BuildClassEmitter(string typeName, Type parentType, IEnumerable<Type> interfaces)
+        {
+            CheckNotGenericTypeDefinition(parentType, "parent type");
+            CheckNotGenericTypeDefinitions(interfaces, nameof(interfaces));
+
+            return new ClassEmitter();
+                
         }
 
     }

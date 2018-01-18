@@ -84,6 +84,7 @@
     <Compile Include="ProxyGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyInstanceContributor.cs" />
+    <Compile Include="ProxyTypeConstants.cs" />
     <Compile Include="Reference.cs" />
     <Compile Include="ReferenceExpression.cs" />
     <Compile Include="SelfReference.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="SlimReadWriteLock.cs" />
     <Compile Include="SlimUpgradeableReadLockHolder.cs" />
     <Compile Include="SlimWriteLockHolder.cs" />
+    <Compile Include="StrongNameUtil.cs" />
     <Compile Include="TypeUtil.cs" />
   </ItemGroup>
   <ItemGroup>

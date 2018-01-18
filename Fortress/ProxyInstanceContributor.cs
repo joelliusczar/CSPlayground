@@ -13,5 +13,10 @@ namespace Fortress
         private readonly Type[] interfaces;
 
         protected ProxyInstanceContributor(Type targetType, Type[] interfaces, string proxyTypeId)
+        {
+            this.targetType = targetType;
+            this.proxyTypeId = proxyTypeId;
+            this.interfaces = interfaces ?? Type.EmptyTypes;
+        }
     }
 }

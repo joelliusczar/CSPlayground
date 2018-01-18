@@ -63,5 +63,10 @@ namespace Fortress
         {
             return this.mixinPositions.ContainsKey(mixinInterfaceType);
         }
+
+        public object GetMixinInstance(Type mixinInterfaceType)
+        {
+            return this.mixinsImpl[mixinPositions[mixinInterfaceType]];
+        }
     }
 }

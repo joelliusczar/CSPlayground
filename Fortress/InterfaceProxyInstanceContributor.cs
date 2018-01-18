@@ -8,6 +8,8 @@ namespace Fortress
 {
     public class InterfaceProxyInstanceContributor: ProxyInstanceContributor
     {
-
+        public InterfaceProxyInstanceContributor(Type targetType,string proxyGeneratorId, Type[] interfaces)
+            :base(targetType,interfaces,proxyGeneratorId)
+        { }
     }
 }

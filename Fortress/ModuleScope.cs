@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Emit;
+using System.Reflection;
+using System.IO;
 
 namespace Fortress
 {
@@ -17,6 +20,9 @@ namespace Fortress
         private readonly INamingScope namingScope;
         private readonly Lock cacheLock = Lock.Create();
         private readonly Dictionary<CacheKey, Type> typeCache = new Dictionary<CacheKey, Type>();
+        private readonly object moduleLocker = new object();
+        private ModuleBuilder moduleBuilderWithStrongName;
+
 
         public static readonly string DEFAULT_ASM_NAME = "DynProxGenAsm";
         public static readonly string DEFAULT_FILE_NAME = "FortressProx.dll";
@@ -29,6 +35,21 @@ namespace Fortress
         public INamingScope NamingScope
         {
             get { return this.namingScope; }
+        }
+
+        public ModuleBuilder StrongNamedModule
+        {
+            get { return this.moduleBuilderWithStrongName; }
+        }
+
+        public string StrongNamedModuleName
+        {
+            get { return Path.GetFileName(this.strongModulePath); }
+        }
+
+        public string WeakNamedModuleName
+        {
+            get { return Path.GetFileName(this.weakModulePath); }
         }
 
         public ModuleScope()
@@ -72,5 +93,55 @@ namespace Fortress
         {
             this.typeCache[key] = type;
         }
+
+        public TypeBuilder DefineType(bool inSignedModePreferably, string name, TypeAttributes flags)
+        {
+            Obt
+        }
+
+        public ModuleBuilder ObtainDynamicModule(bool isStrongNamed)
+        {
+            if(isStrongNamed)
+            {
+
+            }
+        }
+
+        public ModuleBuilder ObtainDynamicModuleWithStronGname()
+        {
+            if(this.disableSignedModule)
+            {
+                throw new InvalidOperationException("sighned module shouldn't be diabled");
+            }
+            lock(this.moduleLocker)
+            {
+                if(this.moduleBuilderWithStrongName == null)
+                {
+                    this.moduleBuilderWithStrongName 
+                }
+            }
+        }
+
+        public ModuleBuilder CreateModule(bool signStrongName)
+        {
+            AssemblyName assemblyName = this.GetAssemblyName(signStrongName);
+            string moduleName = signStrongName ? this.StrongNamedModuleName : this.WeakNamedModuleName;
+            //flag: FEATURE_APPDOMAIN
+                
+        }
+
+        private AssemblyName GetAssemblyName(bool signStrongName)
+        {
+            AssemblyName assemblyName = new AssemblyName {
+                Name = signStrongName? this.strongAssemblyName : weakAssemblyName
+            };
+
+            //#INSPECT:
+
+            return assemblyName;
+
+        }
+
+
     }
 }
