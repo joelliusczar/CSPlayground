@@ -35,7 +35,7 @@ namespace Fortress
             ProxyGenerationOptions = options;
 
             interfaces = TypeUtil.GetAllInterfaces(interfaces);
-            CacheKey cacheKey = new CacheKey(proxyTargetType, this.targetType, interfaces, options);
+            CacheKey cacheKey = new CacheKey(proxyTargetType.GetTypeInfo(), this.targetType, interfaces, options);
 
 
 
@@ -154,12 +154,12 @@ namespace Fortress
                 throw new ArgumentException("base type fro proxy is null");
             }
 
-            if(!type.IsClass)
+            if(!type.GetTypeInfo().IsClass)
             {
                 throw new ArgumentException("is not a class type");
             }
 
-            if(type.IsSealed)
+            if(type.GetTypeInfo().IsSealed)
             {
                 throw new ArgumentException("it is sealed");
             }

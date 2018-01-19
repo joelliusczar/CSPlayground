@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Fortress
 {
@@ -31,7 +32,7 @@ namespace Fortress
                 throw new ArgumentNullException("interceptors");
             }
 
-            if(!interfaceToProxy.GetType().IsInterface)
+            if(!interfaceToProxy.GetTypeInfo().IsInterface)
             {
                 throw new ArgumentException("Specified type is not an interface","interfaceToProxy");
             }
@@ -50,7 +51,7 @@ namespace Fortress
 
         protected void CheckNotGenericTypeDefinition(Type type,string argumentName)
         {
-            if(type != null && type.GetType().IsGenericTypeDefinition)
+            if(type != null && type.GetTypeInfo().IsGenericTypeDefinition)
             {
                 throw new Exception("can't create proxy for type because it is an open generic type");
             }

@@ -12,6 +12,11 @@ namespace Fortress
         private readonly IDictionary<string, FieldReference> fields = new Dictionary<string, FieldReference>(StringComparer.OrdinalIgnoreCase);
         private TypeBuilder typeBuilder;
 
+        public TypeBuilder TypeBuilder
+        {
+            get { return this.typeBuilder; }
+        }
+
         public AbstractTypeEmitter(TypeBuilder typeBuilder)
         {
             this.typeBuilder = typeBuilder;

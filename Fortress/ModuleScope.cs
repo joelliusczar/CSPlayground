@@ -22,6 +22,7 @@ namespace Fortress
         private readonly Dictionary<CacheKey, Type> typeCache = new Dictionary<CacheKey, Type>();
         private readonly object moduleLocker = new object();
         private ModuleBuilder moduleBuilderWithStrongName;
+        private ModuleBuilder moduleBuilder;
 
 
         public static readonly string DEFAULT_ASM_NAME = "DynProxGenAsm";
@@ -47,9 +48,40 @@ namespace Fortress
             get { return Path.GetFileName(this.strongModulePath); }
         }
 
+        public ModuleBuilder WeakNamedModule
+        {
+            get { return this.moduleBuilder; }
+        }
+
         public string WeakNamedModuleName
         {
             get { return Path.GetFileName(this.weakModulePath); }
+        }
+
+        public string StrongNamedModuleDirectory
+        {
+            get
+            {
+                string directory = Path.GetDirectoryName(this.strongModulePath);
+                if(string.IsNullOrEmpty(directory))
+                {
+                    return null;
+                }
+                return directory;
+            }
+        }
+
+        public string WeakNamedModuleDirectory
+        {
+            get
+            {
+                string directory = Path.GetDirectoryName(this.weakModulePath);
+                if(string.IsNullOrEmpty(directory))
+                {
+                    return null;
+                }
+                return directory;
+            }
         }
 
         public ModuleScope()
@@ -96,18 +128,20 @@ namespace Fortress
 
         public TypeBuilder DefineType(bool inSignedModePreferably, string name, TypeAttributes flags)
         {
-            Obt
+            ModuleBuilder module = this.ObtainDynamicModule(!this.disableSignedModule && inSignedModePreferably);
+            return module.DefineType(name, flags);
         }
 
         public ModuleBuilder ObtainDynamicModule(bool isStrongNamed)
         {
             if(isStrongNamed)
             {
-
+                return this.ObtainDynamicModuleWithStrongname();
             }
+            return this.ObtainDynamicModuleWithWeakName();
         }
 
-        public ModuleBuilder ObtainDynamicModuleWithStronGname()
+        public ModuleBuilder ObtainDynamicModuleWithStrongname()
         {
             if(this.disableSignedModule)
             {
@@ -117,8 +151,21 @@ namespace Fortress
             {
                 if(this.moduleBuilderWithStrongName == null)
                 {
-                    this.moduleBuilderWithStrongName 
+                    this.moduleBuilderWithStrongName = this.CreateModule(true);
                 }
+                return this.moduleBuilderWithStrongName;
+            }
+        }
+
+        public ModuleBuilder ObtainDynamicModuleWithWeakName()
+        {
+            lock(this.moduleLocker)
+            {
+                if(this.moduleBuilder == null)
+                {
+                    this.moduleBuilder = CreateModule(false);
+                }
+                return this.moduleBuilder;
             }
         }
 
@@ -126,8 +173,40 @@ namespace Fortress
         {
             AssemblyName assemblyName = this.GetAssemblyName(signStrongName);
             string moduleName = signStrongName ? this.StrongNamedModuleName : this.WeakNamedModuleName;
-            //flag: FEATURE_APPDOMAIN
-                
+#if FEATURE_APPDOMAIN
+            if(this.savePhysicalAssembly)
+            {
+                AssemblyBuilder assemblyBuilder;
+                try
+                {
+                    assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.RunAndSave,
+                        signStrongName ? this.StrongNamedModuleDirectory : this.WeakNamedModuleDirectory);
+                }
+                catch(ArgumentException e)
+                {
+                    if(!signStrongName && !e.StackTrace.Contains("ComputePublicKey"))
+                    {
+                        throw;
+                    }
+                    throw new ArgumentException("You have don't have permissions required to sign assembly");
+                }
+                ModuleBuilder module = assemblyBuilder.DefineDynamicModule(moduleName, moduleName, false);
+                return module;
+
+            }
+            else
+#endif
+            {
+#if FEATURE_APPDOMAIN
+                AssemblyBuilder assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
+#else
+                AssemblyBuilder assemblyBuilder = AppDomain.DefineDynamicAssembly(assemblyName,AssemblyBuilderAccesss.Run);
+#endif
+                ModuleBuilder module = assemblyBuilder.DefineDynamicModule(moduleName);
+                return module;
+            }
+
+
         }
 
         private AssemblyName GetAssemblyName(bool signStrongName)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Fortress
 {
@@ -48,7 +50,7 @@ namespace Fortress
 
         protected void CheckNotGenericTypeDefinition(Type type,string argumentName)
         {
-            if(type != null && type.IsGenericTypeDefinition)
+            if(type != null && type.GetTypeInfo().IsGenericTypeDefinition)
             {
                 throw new ArgumentException("type cannot be generic");
             }
@@ -115,6 +117,10 @@ namespace Fortress
 
         protected void AddMappingNoCheck(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
         {
+            Debug.Assert(implementer != null, "implementer is null");
+            Debug.Assert(@interface != null, "@interface is null");
+            Debug.Assert(@interface.GetTypeInfo().IsInterface, "@interface.IsInterface");
+
             mapping.Add(@interface, implementer);
         }
 

@@ -30,7 +30,7 @@ namespace Fortress
                     continue;
                 }
 
-                if(t.IsInterface)
+                if(t.GetTypeInfo().IsInterface)
                 {
                     if(interfaces.Add(t) == false)
                     {
@@ -39,7 +39,7 @@ namespace Fortress
                 }
 
                 Type[] innerInterfaces = t.GetInterfaces();
-                for(int j = 0;j < innerInterfaces.Length;ji++)
+                for(int j = 0;j < innerInterfaces.Length;j++)
                 {
                     Type @interface = innerInterfaces[j];
                     interfaces.Add(@interface);

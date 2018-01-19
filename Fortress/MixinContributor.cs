@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Fortress
 {
@@ -34,7 +36,11 @@ namespace Fortress
 
         public void AddEmptyInterface(Type @interface)
         {
-            //bunch of asserts
+            Debug.Assert(@interface != null, "no null interfaces!");
+            Debug.Assert(@interface.GetTypeInfo().IsInterface, @"should be interfaces only!");
+            Debug.Assert(!interfaces.Contains(@interface),"shouldn't be adding interface twice");
+            Debug.Assert(!this.empty.Contains(@interface), "shouldn't be adding interface twice");
+
             this.empty.Add(@interface);
         }
     }
