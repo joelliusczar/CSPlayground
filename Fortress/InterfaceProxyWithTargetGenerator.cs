@@ -126,6 +126,15 @@ namespace Fortress
         {
             Type baseType = this.ProxyGenerationOptions.BaseTypeForInterfaceProxy;
 
+            emitter = this.BuildClassEmitter(typeName, proxyTargetType, interfaces);
+
+
+
+        }
+
+        public void CrateFields(ClassEmitter emitter, Type proxyTargetType)
+        {
+
         }
 
         protected virtual InterfaceProxyWithoutTargetContributor GetContributorForAdditionalInterfaces(INamingScope namingScope)

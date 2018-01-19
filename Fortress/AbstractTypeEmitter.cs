@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Emit;
+using System.Reflection;
 
 namespace Fortress
 {
@@ -34,6 +35,44 @@ namespace Fortress
             fields.TryGetValue(name, out value);
             return value;
         }
+
+        public FieldReference CreateStaticField(string name, Type fieldType)
+        {
+            return this.CreateStaticField(name, fieldType, FieldAttributes.Private);
+        }
+
+        public FieldReference CreateStaticField(string name, Type fieldType, FieldAttributes atts)
+        {
+            atts |= FieldAttributes.Static;
+            return this.CreateField(name, fieldType, atts);
+        }
+
+        public FieldReference CreateField(string name,Type fieldType)
+        {
+            return this.CreateField(name, fieldType, true);
+        }
+
+        public FieldReference CreateField(string name, Type fieldType,bool serializable)
+        {
+            FieldAttributes atts = FieldAttributes.Private;
+
+            if(!serializable)
+            {
+                atts |= FieldAttributes.NotSerialized;
+            }
+            return CreateField(name, fieldType, atts);
+        }
+
+        public FieldReference CreateField(string name,Type fieldType, FieldAttributes atts)
+        {
+            FieldBuilder fieldBuilder = this.typeBuilder.DefineField(name, fieldType, atts);
+            FieldReference reference = new FieldReference(fieldBuilder);
+            this.fields[name] = reference;
+            return reference;
+
+        }
+
+
 
     }
 }

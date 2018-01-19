@@ -11,11 +11,15 @@ namespace Fortress
     public class ClassEmitter: AbstractTypeEmitter
     {
         private readonly ModuleScope moduleScope;
+        private const TypeAttributes DefaultAttributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.Serializable;
 
         public ClassEmitter(ModuleScope moduleScope, String name,Type baseType, IEnumerable<Type> interfaces)
-        {
+            :this(moduleScope,name,baseType,interfaces,DefaultAttributes,ShouldForceUnsigned())
+        {}
 
-        }
+        public ClassEmitter(ModuleScope moduleScope,string name,Type baseType,IEnumerable<Type> interfaces,TypeAttributes flags)
+            :this(moduleScope,name,baseType,interfaces,flags,ShouldForceUnsigned())
+        { }
 
         public ClassEmitter(ModuleScope moduleScope,string name, Type baseType, IEnumerable<Type> interfaces,
             TypeAttributes flags, bool forceUnsigned)
@@ -65,6 +69,11 @@ namespace Fortress
 
             }
             return interfaces;
+        }
+
+        private static bool ShouldForceUnsigned()
+        {
+            return !StrongNameUtil.CanStrongNameAssembly;
         }
 
     }

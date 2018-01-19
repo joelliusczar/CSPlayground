@@ -14,6 +14,8 @@ namespace Fortress
         public Type BaseTypeForInterfaceProxy { get; set; }
         public IProxyGenerationHook Hook { get; set; }
 
+        public IInterceptorSelector Selector { get; set; }
+
         public bool HasMixins
         {
             get { return mixins != null && mixins.Count != 0; }

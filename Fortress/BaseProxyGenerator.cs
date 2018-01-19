@@ -134,11 +134,39 @@ namespace Fortress
 
         protected virtual ClassEmitter BuildClassEmitter(string typeName, Type parentType, IEnumerable<Type> interfaces)
         {
-            CheckNotGenericTypeDefinition(parentType, "parent type");
+            CheckNotGenericTypeDefinition(parentType, nameof(parentType));
             CheckNotGenericTypeDefinitions(interfaces, nameof(interfaces));
 
-            return new ClassEmitter();
+            return new ClassEmitter(this.Scope,typeName,parentType,interfaces);
                 
+        }
+
+        protected virtual void CreateFields(ClassEmitter emitter)
+        {
+            
+        }
+
+        protected FieldReference CreateOptionsField(ClassEmitter emitter)
+        {
+            return emitter.CreateStaticField("proxyGenerationOptions", typeof(ProxyGenerationOptions));
+
+        }
+
+        protected void CreateSelectorField(ClassEmitter emitter)
+        {
+            if(this.ProxyGenerationOptions.Selector == null)
+            {
+                return;
+            }
+
+            emitter.CreateField("__selector", typeof(IInterceptorSelector));
+        }
+
+        protected void CreateInterceptorsField(ClassEmitter emitter)
+        {
+            FieldReference interceptorsField = emitter.CreateField("__interceptors",typeof(IInterceptor[]));
+
+            //serialization stuff
         }
 
     }

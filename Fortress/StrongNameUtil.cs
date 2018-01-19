@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Security.Permissions;
+using System.Security;
 
 namespace Fortress
 {
@@ -11,6 +13,30 @@ namespace Fortress
     {
         private static readonly object lockObject = new object();
         private static readonly IDictionary<Assembly, bool> signedAssemblyCache = new Dictionary<Assembly, bool>();
+
+        public static bool CanStrongNameAssembly { get; set; }
+
+#if FEATURE_SECURITY_PERMISSIONS
+        [SecuritySafeCritical]
+#endif
+        static StrongNameUtil()
+        {
+#if FEATURE_SECURITY_PERMISSIONS
+            try
+            {
+                new SecurityPermission(SecurityPermissionFlag.UnmanagedCode).Demand();
+                CanStrongNameAssembly = true;
+            }
+            catch(SecurityException)
+            {
+                CanStrongNameAssembly = false;
+            }
+#else
+            CanStrongNameAssembly = true;
+#endif
+
+        }
+
         public static bool IsAssemblySigned(this Assembly assembly)
         {
             lock(lockObject)
@@ -43,5 +69,7 @@ namespace Fortress
             return IsAnyTypeFromUnsignedAssembly(interfaces);
             
         }
+
+
     }
 }
