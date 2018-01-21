@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Fortress
 {
-    public interface ITypeContributor
+    public class MembersCollector
     {
-        void CollectElementsToProxy(IProxyGenerationHook hook, MetaType model);
+        private readonly IDictionary<MethodInfo,Meta>
     }
 }

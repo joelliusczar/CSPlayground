@@ -18,5 +18,10 @@ namespace Fortress
             this.proxyTypeId = proxyTypeId;
             this.interfaces = interfaces ?? Type.EmptyTypes;
         }
+
+        public void CollectElementsToProxy(IProxyGenerationHook hook,MetaType model)
+        {
+
+        }
     }
 }

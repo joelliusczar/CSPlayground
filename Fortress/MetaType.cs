@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fortress
 {
-    public interface ITypeContributor
+    public class MetaType
     {
-        void CollectElementsToProxy(IProxyGenerationHook hook, MetaType model);
+
     }
 }

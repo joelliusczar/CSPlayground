@@ -12,8 +12,44 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            IsStuff();
+            CastNullToSomething();
             Console.ReadKey();
+        }
+
+        public static void CastNullToSomething()
+        {
+            Catapult a = null;
+
+            object obj = a;
+
+            AcceptsCatapults((Catapult)obj);
+        }
+
+        public static void AcceptsCatapults(Catapult c)
+        {
+            if(c == null)
+            {
+                Console.WriteLine("It made it through");
+                return;
+            }
+            c.Smack();
+        }
+
+
+        public static void ExplicitInterfaces()
+        {
+            Finger<int> f = new Finger<int>();
+            f.DoIt(7);
+
+            Extender<int> e = new Extender<int>();
+            e.DoIt(19);
+
+            ((IPoke)e).DoIt(18);
+
+            Ashtonishing ash = new Ashtonishing();
+
+            ((ITrash)ash).DoAshStuff();
+            
         }
 
         public static void DoActionStuff()

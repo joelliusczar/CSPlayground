@@ -72,6 +72,16 @@ namespace Fortress
 
         }
 
+        public void AddCustomAttributes(ProxyGenerationOptions proxyGenerationOptions)
+        {
+            foreach(CustomAttributeInfo attribute in proxyGenerationOptions.AdditionalAttributes)
+            {
+                typeBuilder.SetCustomAttribute(attribute.Builder);
+#if FEATURE_SERIALIZATION
+#endif
+            }
+        } 
+
 
 
     }

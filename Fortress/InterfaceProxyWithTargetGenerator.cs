@@ -9,6 +9,8 @@ namespace Fortress
 {
     public class InterfaceProxyWithTargetGenerator: BaseProxyGenerator
     {
+        protected FieldReference targetField;
+
         protected virtual bool AllowChangeTarget
         {
             get { return false; }
@@ -48,6 +50,12 @@ namespace Fortress
 
             ClassEmitter emitter;
             FieldReference interceptorsField;
+            Type baseType = this.Init(typeName, out emitter, proxyTargetType, out interceptorsField, allInterfaces);
+            MetaType model = new MetaType();
+            foreach(ITypeContributor contributor in contributors)
+            {
+
+            }
 
 
         }
@@ -128,14 +136,27 @@ namespace Fortress
 
             emitter = this.BuildClassEmitter(typeName, proxyTargetType, interfaces);
 
+            this.CreateFields(emitter, proxyTargetType);
+            this.CreateTypeAttributes(emitter);
 
+            interceptorField = emitter.GetField("__interceptors");
+
+            return baseType;
 
         }
 
-        public void CrateFields(ClassEmitter emitter, Type proxyTargetType)
+        public void CreateFields(ClassEmitter emitter, Type proxyTargetType)
         {
+            base.CreateFields(emitter);
+            this.targetField = emitter.CreateField("__target", proxyTargetType);
 
+#if FEATURE_SERIALIZATION
+#endif
         }
+
+
+
+
 
         protected virtual InterfaceProxyWithoutTargetContributor GetContributorForAdditionalInterfaces(INamingScope namingScope)
         {

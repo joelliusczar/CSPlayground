@@ -48,7 +48,9 @@
     <Compile Include="BaseProxyGenerator.cs" />
     <Compile Include="CacheKey.cs" />
     <Compile Include="ClassEmitter.cs" />
+    <Compile Include="CollectionExtensions.cs" />
     <Compile Include="CompositeTypeContributor.cs" />
+    <Compile Include="CustomAttributeInfo.cs" />
     <Compile Include="DefaultProxyBuilder.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="EmExpression.cs" />
@@ -75,6 +77,12 @@
     <Compile Include="ITypeContributor.cs" />
     <Compile Include="IUpgradeableLockHolder.cs" />
     <Compile Include="Lock.cs" />
+    <Compile Include="MembersCollector.cs" />
+    <Compile Include="MetaMethod.cs" />
+    <Compile Include="MetaType.cs" />
+    <Compile Include="MetaTypeElement.cs" />
+    <Compile Include="MetaTypeElementUtil.cs" />
+    <Compile Include="MethodSignatureComparer.cs" />
     <Compile Include="MixinContributor.cs" />
     <Compile Include="MixinData.cs" />
     <Compile Include="ModuleScope.cs" />
@@ -87,6 +95,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyInstanceContributor.cs" />
     <Compile Include="ProxyTypeConstants.cs" />
+    <Compile Include="ProxyUtil.cs" />
     <Compile Include="Reference.cs" />
     <Compile Include="ReferenceExpression.cs" />
     <Compile Include="SelfReference.cs" />

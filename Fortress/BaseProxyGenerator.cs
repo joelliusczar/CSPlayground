@@ -143,7 +143,17 @@ namespace Fortress
 
         protected virtual void CreateFields(ClassEmitter emitter)
         {
-            
+            this.CreateOptionsField(emitter);
+            this.CreateSelectorField(emitter);
+            this.CreateInterceptorsField(emitter);
+        }
+
+        protected virtual void CreateTypeAttributes(ClassEmitter emitter)
+        {
+            emitter.AddCustomAttributes(this.ProxyGenerationOptions);
+
+#if FEATURE_SERIALIZATION
+#endif
         }
 
         protected FieldReference CreateOptionsField(ClassEmitter emitter)

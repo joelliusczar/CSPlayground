@@ -68,5 +68,47 @@ namespace Fortress
         {
             return this.mixinsImpl[mixinPositions[mixinInterfaceType]];
         }
+
+        public override bool Equals(object obj)
+        {
+            if(ReferenceEquals(this,obj))
+            {
+                return true;
+            }
+
+            MixinData other = obj as MixinData;
+            if(ReferenceEquals(other,null))
+            {
+                return false;
+            }
+
+            if(this.mixinsImpl.Count != other.mixinsImpl.Count)
+            {
+                return false;
+            }
+
+            for(int i = 0; i < mixinsImpl.Count; i++)
+            {
+                if(mixinsImpl[i].GetType() != other.mixinsImpl.GetType())
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = 0;
+                foreach(object mixinImplementation in this.mixinsImpl)
+                {
+                    hashCode = 29 * hashCode + mixinImplementation.GetType().GetHashCode();
+                }
+                return hashCode;
+            }
+        }
     }
 }

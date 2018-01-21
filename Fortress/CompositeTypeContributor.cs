@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace Fortress
 {
-    public class CompositeTypeContributor: ITypeContributor
+    public abstract class CompositeTypeContributor: ITypeContributor
     {
         protected readonly INamingScope namingScope;
         protected readonly ICollection<Type> interfaces = new HashSet<Type>();
@@ -25,5 +25,15 @@ namespace Fortress
             Debug.Assert(!this.interfaces.Contains(@interface), "our hashset doesn't have that interface");
             this.interfaces.Add(@interface);
         }
+
+        public void CollectElementsToProxy(IProxyGenerationHook hook,MetaType model)
+        {
+            foreach(MembersCollector collector in this.CollectElementsToProxyInternal(hook))
+            {
+
+            }
+        }
+
+        protected abstract IEnumerable<MembersCollector> CollectElementsToProxyInternal(IProxyGenerationHook hook);
     }
 }
