@@ -80,6 +80,7 @@
     <Compile Include="MembersCollector.cs" />
     <Compile Include="MetaEvent.cs" />
     <Compile Include="MetaMethod.cs" />
+    <Compile Include="MetaProperty.cs" />
     <Compile Include="MetaType.cs" />
     <Compile Include="MetaTypeElement.cs" />
     <Compile Include="MetaTypeElementUtil.cs" />
