@@ -34,8 +34,11 @@ namespace Fortress
                     return internalsVisibleToDynamicProxy[asm];
                 }
 
-                InternalsVisibleToAttribute internalsVisibleTo = asm.GetCustomAttribute<InternalsVisibleToAttribute>();
-                bool found = internalsVisibleTo.
+                IEnumerable<InternalsVisibleToAttribute> internalsVisibleTo = asm.GetCustomAttributes<InternalsVisibleToAttribute>();
+                bool found = internalsVisibleTo.Any(attr => attr.AssemblyName.Contains(ModuleScope.DEFAULT_ASM_NAME));
+
+                internalsVisibleToDynamicProxy.Add(asm, found);
+                return found;
             }
         }
     }

@@ -40,7 +40,7 @@ namespace Fortress
             this.Standalone = standalone;
             this.Proxyable = proxyable;
             this.HasTarget = hasTarget;
-            this.Attributes = 
+            this.Attributes = ObtainAttributes();
         }
 
         public bool Equals(MetaMethod other)
@@ -104,7 +104,29 @@ namespace Fortress
             {
                 attributes |= MethodAttributes.HideBySig;
             }
-            if(ProxyUtil.IsInternal(methodInfo) && )
+            if(ProxyUtil.IsInternal(methodInfo) && ProxyUtil.AreInternalsVisibleToDynamicProxy(methodInfo.DeclaringType.GetTypeInfo().Assembly))
+            {
+                attributes |= MethodAttributes.Assembly;
+            }
+            if(methodInfo.IsFamilyAndAssembly)
+            {
+                attributes |= MethodAttributes.FamANDAssem;
+            }
+            else if(methodInfo.IsFamilyOrAssembly)
+            {
+                attributes |= MethodAttributes.FamORAssem;
+            }
+            else if(methodInfo.IsFamily)
+            {
+                attributes |= MethodAttributes.Family;
+            }
+
+            if(!this.Standalone)
+            {
+                attributes |= MethodAttributes.SpecialName;
+            }
+
+            return attributes;
         }
     }
 }

@@ -9,6 +9,17 @@ namespace Fortress
 {
     public class MembersCollector
     {
-        private readonly IDictionary<MethodInfo,Meta>
+        private readonly IDictionary<MethodInfo, MetaMethod> methods = new Dictionary<MethodInfo, MetaMethod>();
+        private readonly IDictionary<EventInfo, MetaEvent> events = new Dictionary<EventInfo, MetaEvent>();
+
+        public IEnumerable<MetaMethod> Methods
+        {
+            get { return methods.Values; }
+        }
+
+        public IEnumerable<MetaEvent> Events
+        {
+            get { return events.Values; }
+        }
     }
 }

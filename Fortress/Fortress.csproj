@@ -78,6 +78,7 @@
     <Compile Include="IUpgradeableLockHolder.cs" />
     <Compile Include="Lock.cs" />
     <Compile Include="MembersCollector.cs" />
+    <Compile Include="MetaEvent.cs" />
     <Compile Include="MetaMethod.cs" />
     <Compile Include="MetaType.cs" />
     <Compile Include="MetaTypeElement.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="SlimUpgradeableReadLockHolder.cs" />
     <Compile Include="SlimWriteLockHolder.cs" />
     <Compile Include="StrongNameUtil.cs" />
+    <Compile Include="TypeElementCollection.cs" />
     <Compile Include="TypeUtil.cs" />
   </ItemGroup>
   <ItemGroup>
