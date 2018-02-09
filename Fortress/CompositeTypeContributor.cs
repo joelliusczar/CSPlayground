@@ -14,6 +14,7 @@ namespace Fortress
         protected readonly ICollection<Type> interfaces = new HashSet<Type>();
         private readonly ICollection<MetaMethod> methods = new TypeElementCollection<MetaMethod>();
         private readonly ICollection<MetaEvent> events = new TypeElementCollection<MetaEvent>();
+        private readonly ICollection<MetaProperty> properties = new TypeElementCollection<MetaProperty>();
 
         protected CompositeTypeContributor(INamingScope namingScope)
         {
@@ -42,6 +43,12 @@ namespace Fortress
                 {
                     model.AddEvent(@event);
                     this.events.Add(@event);
+                }
+
+                foreach(MetaProperty property in collector.Properties)
+                {
+                    model.AddProperty(property);
+                    this.properties.Add(property);
                 }
 
             }

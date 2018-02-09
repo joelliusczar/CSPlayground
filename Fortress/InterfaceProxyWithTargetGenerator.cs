@@ -54,9 +54,10 @@ namespace Fortress
             MetaType model = new MetaType();
             foreach(ITypeContributor contributor in contributors)
             {
-
+                contributor.CollectElementsToProxy(this.ProxyGenerationOptions.Hook, model);
             }
 
+            this.ProxyGenerationOptions.Hook.MethodsInspected();
 
         }
 

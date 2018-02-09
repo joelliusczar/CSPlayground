@@ -179,5 +179,7 @@ namespace Fortress
             //serialization stuff
         }
 
+        protected 
+
     }
 }

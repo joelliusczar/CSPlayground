@@ -11,6 +11,7 @@ namespace Fortress
     {
         private readonly ICollection<MetaMethod> methods = new TypeElementCollection<MetaMethod>();
         private readonly ICollection<MetaEvent> events = new TypeElementCollection<MetaEvent>();
+        private readonly ICollection<MetaProperty> properties = new TypeElementCollection<MetaProperty>();
 
         public IEnumerable<MetaMethod> Methods
         {
@@ -25,6 +26,11 @@ namespace Fortress
         public void AddEvent(MetaEvent @event)
         {
             this.events.Add(@event);
+        }
+
+        public void AddProperty(MetaProperty property)
+        {
+            properties.Add(property);
         }
     }
 }

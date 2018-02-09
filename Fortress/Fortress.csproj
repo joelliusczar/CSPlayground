@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractCodeBuilder.cs" />
     <Compile Include="AbstractTypeEmitter.cs" />
     <Compile Include="AllMethodsHook.cs" />
     <Compile Include="ArgumentUtil.cs" />
@@ -50,6 +51,9 @@
     <Compile Include="ClassEmitter.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="CompositeTypeContributor.cs" />
+    <Compile Include="ConstructorCodeBuilder.cs" />
+    <Compile Include="ConstructorEmitter.cs" />
+    <Compile Include="ConstructorInvocationStatement.cs" />
     <Compile Include="CustomAttributeInfo.cs" />
     <Compile Include="DefaultProxyBuilder.cs" />
     <Compile Include="Delegates.cs" />
@@ -76,10 +80,12 @@
     <Compile Include="IProxyTargetAccessor.cs" />
     <Compile Include="ITypeContributor.cs" />
     <Compile Include="IUpgradeableLockHolder.cs" />
+    <Compile Include="LdcOpCodesDictionary.cs" />
     <Compile Include="Lock.cs" />
     <Compile Include="MembersCollector.cs" />
     <Compile Include="MetaEvent.cs" />
     <Compile Include="MetaMethod.cs" />
+    <Compile Include="MetaProperty.cs" />
     <Compile Include="MetaType.cs" />
     <Compile Include="MetaTypeElement.cs" />
     <Compile Include="MetaTypeElementUtil.cs" />
@@ -91,6 +97,7 @@
     <Compile Include="NoOpLock.cs" />
     <Compile Include="NullCoalescingOperatorExpression.cs" />
     <Compile Include="NullExpression.cs" />
+    <Compile Include="OpCodeUtil.cs" />
     <Compile Include="ProxyGenerationOptions.cs" />
     <Compile Include="ProxyGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,11 +106,13 @@
     <Compile Include="ProxyUtil.cs" />
     <Compile Include="Reference.cs" />
     <Compile Include="ReferenceExpression.cs" />
+    <Compile Include="ReturnStatement.cs" />
     <Compile Include="SelfReference.cs" />
     <Compile Include="SlimReadLockHolder.cs" />
     <Compile Include="SlimReadWriteLock.cs" />
     <Compile Include="SlimUpgradeableReadLockHolder.cs" />
     <Compile Include="SlimWriteLockHolder.cs" />
+    <Compile Include="Statement.cs" />
     <Compile Include="StrongNameUtil.cs" />
     <Compile Include="TypeElementCollection.cs" />
     <Compile Include="TypeUtil.cs" />

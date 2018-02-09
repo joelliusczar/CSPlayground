@@ -46,6 +46,7 @@
     <Compile Include="ActionBuilder.cs" />
     <Compile Include="Ashtonishing.cs" />
     <Compile Include="BigHead.cs" />
+    <Compile Include="Bros.cs" />
     <Compile Include="Deadrace.cs" />
     <Compile Include="DeHooten.cs" />
     <Compile Include="Expressionisto.cs" />

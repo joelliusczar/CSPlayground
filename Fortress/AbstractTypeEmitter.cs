@@ -18,6 +18,18 @@ namespace Fortress
             get { return this.typeBuilder; }
         }
 
+        public Type BaseType
+        {
+            get
+            {
+                if(this.TypeBuilder.IsInterface)
+                {
+                    throw new InvalidOperationException("interfaces have no basetypes");
+                }
+                return TypeBuilder.BaseType;
+            }
+        }
+
         public AbstractTypeEmitter(TypeBuilder typeBuilder)
         {
             this.typeBuilder = typeBuilder;

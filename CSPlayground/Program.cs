@@ -12,8 +12,14 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            CastNullToSomething();
+            YoungerBro bro = new YoungerBro();
+            DemoBros(bro);
             Console.ReadKey();
+        }
+
+        public static void DemoBros(OlderBro bro)
+        {
+            bro.CoverYou();
         }
 
         public static void CastNullToSomething()
