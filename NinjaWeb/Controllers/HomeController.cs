@@ -13,6 +13,10 @@ namespace NinjaWeb.Controllers
             return "'sup world";
         }
 
+        public ActionResult Chat()
+        {
+            return View();
+        }
 
     }
 }
