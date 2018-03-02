@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +12,7 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            YoungerBro bro = new YoungerBro();
-            DemoBros(bro);
+            FirstAsync();
             Console.ReadKey();
         }
 
@@ -107,6 +106,44 @@ namespace CSPlayground
             }
         }
 
+        public static void FirstAsync()
+        {
+            Console.WriteLine("Very First Print Statement");
+            Task task = SecondAsync();
+
+            long safeCount = 0;
+            while(!task.IsCompleted&&safeCount < int.MaxValue)
+            {
+                if (safeCount % 10000000 == 0)
+                {
+                    Console.WriteLine("Still Waiting");
+                }
+                safeCount++;
+            } 
+            Console.WriteLine("Done asyncing and safe count is "+ safeCount);
+        }
+
+
+        public static async Task SecondAsync()
+        {
+            Console.WriteLine("About to call wait some shit first time");
+            await WaitSomeShit(3000);
+            Console.WriteLine("Done with wait some shit first time");
+            Console.WriteLine("About to Wait myself some");
+            Task.Delay(500).Wait();
+            Console.WriteLine("Done with myself waiting");
+            Console.WriteLine("About to call wait some shit second time");
+            await WaitSomeShit(2000);
+            Console.WriteLine("Done with wait some shit second time");
+
+        }
+
+        public static async Task WaitSomeShit(int t)
+        {
+            Console.WriteLine("About to Wait for "+t+" seconds");
+            await Task.Delay(t);
+            Console.WriteLine("Finished waiting for "+t+" seconds");
+        }
 
     }
 }
