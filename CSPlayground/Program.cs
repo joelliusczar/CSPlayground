@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
+using BatAndBallEF;
+
 
 namespace CSPlayground
 {
@@ -12,8 +14,15 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            FirstAsync();
+            BaseballEntityStuff();
             Console.ReadKey();
+        }
+
+        public static void BaseballEntityStuff()
+        {
+            Baseball_DBEntities dbItems = new Baseball_DBEntities();
+            Team t = dbItems.Teams.First();
+            Console.WriteLine(t.TeamName);
         }
 
         public static void DemoBros(OlderBro bro)
