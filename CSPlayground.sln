@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BareBones", "BareBones\Bare
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatAndBallEF", "BatAndBallEF\BatAndBallEF.csproj", "{9737B07F-210B-4176-9FAE-B969ACD8C969}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autho", "Autho\Autho.csproj", "{4E75F171-E4B0-4800-A715-21BEA326C380}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{9737B07F-210B-4176-9FAE-B969ACD8C969}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9737B07F-210B-4176-9FAE-B969ACD8C969}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9737B07F-210B-4176-9FAE-B969ACD8C969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E75F171-E4B0-4800-A715-21BEA326C380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E75F171-E4B0-4800-A715-21BEA326C380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E75F171-E4B0-4800-A715-21BEA326C380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E75F171-E4B0-4800-A715-21BEA326C380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
