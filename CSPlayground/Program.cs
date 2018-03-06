@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
 using BatAndBallEF;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data.EntityClient;
 
 
 namespace CSPlayground
@@ -14,8 +17,18 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            BaseballEntityStuff();
+            ConnectionStringStuff();
             Console.ReadKey();
+        }
+
+        public static void ConnectionStringStuff()
+        {
+            ConnectionStringSettingsCollection collection = ConfigurationManager.ConnectionStrings;;
+            ConnectionStringSettings setting = collection[1];
+            string connectStr = setting.ConnectionString;
+            EntityConnectionStringBuilder efStrBuilder = new EntityConnectionStringBuilder(connectStr);
+            SqlConnectionStringBuilder sqlConnectStrBuilder = new SqlConnectionStringBuilder(efStrBuilder.ProviderConnectionString);
+            
         }
 
         public static void BaseballEntityStuff()
