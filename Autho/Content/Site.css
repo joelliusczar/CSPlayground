@@ -1,12 +1,32 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/*
+    Table of Contents:
+    Layout:
+        General
+        Header
+        Content
+        Footer
+    Colors:
+        General
+        Header
+        Content
+        Footer
+*/
+
+/*Layout*/
+
+/*General*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*Header*/
+
+.navbar-header img{
+    margin:5px auto 5px auto;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -16,9 +36,16 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+
+
+/* Colors*/
+
+.navbar.navbar-inverse.navbar-fixed-top{
+    background-color:#ffffff;
+}
+
+
+.navbar-inverse .navbar-toggle .icon-bar{
+    background-color: #8c2232;
 }
