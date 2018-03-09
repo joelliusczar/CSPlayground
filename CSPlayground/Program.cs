@@ -17,8 +17,16 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            ConnectionStringStuff();
+            DateCheck();
             Console.ReadKey();
+        }
+
+        public static void DateCheck()
+        {
+            DateTime dt = new DateTime(1988, 4, 27).ToUniversalTime();
+            DateTime plusTime = dt.AddYears(19);
+            DateTime febDay = new DateTime(1988, 2, 29).ToUniversalTime();
+            DateTime febPlus = febDay.AddYears(2);
         }
 
         public static void ConnectionStringStuff()
