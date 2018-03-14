@@ -10,5 +10,6 @@ namespace Autho.Services
     public interface IShipProvider
     {
         IEnumerable<Ship> GetShipsForPage(int pageNum);
+        IEnumerable<Ship> GetAllShips();
     }
 }

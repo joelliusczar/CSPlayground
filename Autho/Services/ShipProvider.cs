@@ -14,9 +14,9 @@ namespace Autho.Services
         public ShipProvider()
         {
             this.AllShips = new List<Ship> {
-                new Ship{name = "70006" },
-                new Ship{name = "70007"},
-                new Ship{name = "70008" }
+                new Ship{name = "70006",CaptainName="Smith",NumCannons="2" },
+                new Ship{name = "70007",CaptainName="Picard",NumCannons="3"},
+                new Ship{name = "70008",CaptainName="Kirk",NumCannons="4" }
             };
         }
 
@@ -24,6 +24,11 @@ namespace Autho.Services
         {
             int resultStart = RECORDS_PER_PAGE * pageNum;
             return AllShips.Skip(resultStart).Take(RECORDS_PER_PAGE);
+        }
+
+        public IEnumerable<Ship> GetAllShips()
+        {
+            return AllShips;
         }
     }
 }

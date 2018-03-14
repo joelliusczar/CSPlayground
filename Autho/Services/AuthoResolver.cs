@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using Ninject;
 using Ninject.Modules;
+using System.Web.Mvc;
 
 namespace Autho.Services
 {
-    public class AuthoResolver
+    public class AuthoResolver: IDependencyResolver
     {
         public IKernel Kernel { get; set; }
 
@@ -21,7 +22,7 @@ namespace Autho.Services
             return Kernel.TryGet(serviceType);
         }
 
-        public IEnumerable<object> GetAllServices(Type serviceType)
+        public IEnumerable<object> GetServices(Type serviceType)
         {
             return Kernel.GetAll(serviceType);
         }

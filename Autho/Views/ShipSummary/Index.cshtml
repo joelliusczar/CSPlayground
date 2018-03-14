@@ -6,28 +6,35 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>CaptainName</th>
+            <th>NumCannons</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>name</th>
+            <th>CaptainName</th>
+            <th>NumCannons</th>
+        </tr>
+    </tfoot>
 </table>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "ShipSummary/GetJason",
+            "columns": [
+                { "data": "name" },
+                { "data": "CaptainName" },
+                { "data": "NumCannons" },
+ 
+            ]
+        });
+    });
+</script>

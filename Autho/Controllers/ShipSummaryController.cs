@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Autho.Models;
 using Autho.Services;
+using Newtonsoft.Json;
 
 namespace Autho.Controllers
 {
@@ -25,6 +26,21 @@ namespace Autho.Controllers
             return View();
         }
 
+
+        public JsonResult GetJason(int? length,int? draw)
+        {
+            var ships = JsonConvert.SerializeObject(ShipProvider.GetAllShips());
+
+            dynamic json = new
+            {
+                draw = draw ?? 0,
+                recordsTotal = ShipProvider.GetAllShips().Count(),
+                recordsFiltered = 10,
+                data = ShipProvider.GetAllShips()
+            };
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }
