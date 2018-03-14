@@ -79,6 +79,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseballModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Baseball_DBEntitiesHuman.cs" />
+    <Compile Include="BatAndBallInterceptor.cs" />
     <Compile Include="League.cs">
       <DependentUpon>BaseballModel.tt</DependentUpon>
     </Compile>

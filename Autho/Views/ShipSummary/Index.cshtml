@@ -34,7 +34,18 @@
                 { "data": "CaptainName" },
                 { "data": "NumCannons" },
  
-            ]
+            ],
+            "createdRow": function (row, data, dataIndex) {
+                $(row).dblclick(function () {
+                    console.log(data);
+                });
+            },
+            "rowCallback": function (row, data, index) {
+                if ((index + 1) % 2 == 0) {
+                    console.log($(row).children("td:first").html("goose"));
+                }
+            }
+
         });
     });
 </script>

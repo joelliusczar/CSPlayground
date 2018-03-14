@@ -17,9 +17,41 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            DateCheck();
+            SkipSome();
             Console.ReadKey();
         }
+
+        public static void ConcatEFInterceptTest()
+        {
+            Baseball_DBEntities dbItems = new Baseball_DBEntities();
+            var items =  from team in dbItems.Teams
+            select new { exName = "Team:" + team.TeamName };
+            Console.WriteLine(items.First().exName);
+        }
+
+        public static void SkipSome()
+        {
+            var nums = EvenNumbers().Skip(10).Take(5);
+            foreach(int num in nums)
+            {
+                Console.WriteLine("{0} of list that has been taken",num);
+            }
+        }
+
+        public static IEnumerable<int> EvenNumbers()
+        {
+            int i = 0;
+            for(; ; )
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine("Generating: {0}",i);
+                    yield return i;
+                }
+                i++;
+            }
+        }
+
 
         public static void DateCheck()
         {
