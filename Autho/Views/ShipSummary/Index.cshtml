@@ -28,7 +28,10 @@
         $('#example').DataTable({
             "processing": true,
             "serverSide": true,
-            "ajax": "ShipSummary/GetJason",
+            "ajax": {
+                "url": "@Url.Action("GetJason", "ShipSummary")",
+                "type": "POST"
+            },
             "columns": [
                 { "data": "name" },
                 { "data": "CaptainName" },

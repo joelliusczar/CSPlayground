@@ -26,12 +26,11 @@ namespace Autho.Controllers
             return View();
         }
 
-
+        [HttpPost]
         public JsonResult GetJason(int? length,int? draw)
         {
-            var ships = JsonConvert.SerializeObject(ShipProvider.GetAllShips());
 
-            dynamic json = new
+            var json = new
             {
                 draw = draw ?? 0,
                 recordsTotal = ShipProvider.GetAllShips().Count(),
