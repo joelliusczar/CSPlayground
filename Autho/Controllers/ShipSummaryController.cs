@@ -41,5 +41,10 @@ namespace Autho.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ShipStat()
+        {
+            return View("ShipStats");
+        }
+
     }
 }

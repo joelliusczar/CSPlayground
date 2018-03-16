@@ -324,6 +324,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\ShipSummary\Index.cshtml" />
     <Content Include="Views\Shared\PaginationPartial.cshtml" />
+    <Content Include="Views\Shared\ShipCard.cshtml" />
+    <Content Include="Views\ShipSummary\ShipStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
