@@ -1,0 +1,13 @@
+﻿@model Autho.Models.JSModel
+
+@{
+    ViewBag.Title = "TryFunc";
+}
+
+<h2>TryFunc</h2>
+
+<script>
+    var dumb = {};
+    dumb.funky = @Html.Raw(Model.jsFunc);
+    dumb.funky();
+</script>

@@ -51,32 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionBuilder.cs" />
-    <Compile Include="Ashtonishing.cs" />
-    <Compile Include="BigHead.cs" />
-    <Compile Include="Bros.cs" />
-    <Compile Include="Deadrace.cs" />
-    <Compile Include="DeHooten.cs" />
-    <Compile Include="Expressionisto.cs" />
-    <Compile Include="Extender.cs" />
-    <Compile Include="Finger.cs" />
-    <Compile Include="GroundTools.cs" />
-    <Compile Include="Hooten.cs" />
-    <Compile Include="IBash.cs" />
-    <Compile Include="IDig.cs" />
-    <Compile Include="IDouble.cs" />
-    <Compile Include="IMash.cs" />
-    <Compile Include="IPoke.cs" />
-    <Compile Include="ITrash.cs" />
-    <Compile Include="Jenerica.cs" />
-    <Compile Include="NumbersGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spatula.cs" />
-    <Compile Include="Statica.cs" />
-    <Compile Include="Synchronicity.cs" />
-    <Compile Include="Useless.cs" />
-    <Compile Include="UselessAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -86,6 +62,14 @@
     <ProjectReference Include="..\BatAndBallEF\BatAndBallEF.csproj">
       <Project>{9737b07f-210b-4176-9fae-b969acd8c969}</Project>
       <Name>BatAndBallEF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlaygroundClasses\PlaygroundClasses.csproj">
+      <Project>{5fb0a854-34d9-4d30-a2d4-82d37adb8bfa}</Project>
+      <Name>PlaygroundClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlaygroundOther\PlaygroundOther.csproj">
+      <Project>{5960287b-f605-42b8-a78a-d4c41d23cfa3}</Project>
+      <Name>PlaygroundOther</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

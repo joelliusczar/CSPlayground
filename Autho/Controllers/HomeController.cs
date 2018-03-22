@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Autho.Models;
 
 namespace Autho.Controllers
 {
@@ -25,6 +26,14 @@ namespace Autho.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult GetFunky()
+        {
+            var js = new JSModel {
+                jsFunc = "function(){alert(\"It's funky in here\")}"
+            };
+            return View("TryFunc", js);
         }
     }
 }

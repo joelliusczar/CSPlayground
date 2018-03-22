@@ -25,7 +25,8 @@
 
 <script>
     $(document).ready(function () {
-        $('#example').DataTable({
+
+        var dt = {
             "processing": true,
             "serverSide": true,
             "ajax": {
@@ -36,7 +37,7 @@
                 { "data": "name" },
                 { "data": "CaptainName" },
                 { "data": "NumCannons" },
- 
+
             ],
             "createdRow": function (row, data, dataIndex) {
                 $(row).dblclick(function () {
@@ -49,6 +50,16 @@
                 }
             }
 
-        });
+        };
+        //Javascript does not like this
+        //console.log("do the print thing up here");
+        //if (madeUp3) {
+        //    console.log("in if");
+        //    dt.madeUp3 = madeUp3;
+        //}
+        //console.log("do the print thing");
+        //console.log(dt);
+
+        $('#example').DataTable(dt);
     });
 </script>

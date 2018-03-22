@@ -9,6 +9,8 @@ using BatAndBallEF;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.EntityClient;
+using PlaygroundClasses;
+using PlaygroundOther;
 
 
 namespace CSPlayground
@@ -17,8 +19,33 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            SkipSome();
+            NullConditionalStuff();
             Console.ReadKey();
+        }
+
+        public static void NullConditionalStuff()
+        {
+            PlaygroundOther.StNullGuy st = new PlaygroundOther.StNullGuy();
+            PlaygroundClasses.StNullGuy guy = new PlaygroundClasses.StNullGuy();
+            Console.WriteLine("This value is: {0} What do you think?", guy.ToString());
+            guy = null;
+            Console.WriteLine("This value is: {0} What do you think?", guy?.ToString());
+            Console.WriteLine("Mynt is {0}", guy?.Mynt);
+            if (guy?.Mynt == 0)
+            {
+                Console.WriteLine("if is true");
+            }
+            else
+            {
+                Console.WriteLine("No true is");
+            }
+
+        }
+
+        public static void DTStringFormat()
+        {
+            DateTime date1 = new DateTime(2008, 8, 29, 19, 27, 15, 18);
+            Console.WriteLine(date1.ToString("d-MMM-yy"));
         }
 
         public static void ConcatEFInterceptTest()
