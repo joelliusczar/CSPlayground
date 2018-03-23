@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Serving you!</h1>
+
+@{ 
+    TomServo.StNull ts = null;
+    string hello = "Hola";
+    string s1 = $"The string interpolated: {hello}";
+}
+
+
+@if (ts?.NullString?.Length > 0)
+{
+    <h2>Something there</h2>
+}
+else
+{
+    <h2>Nothing there</h2>
+}
+
+<h2>@Html.Raw(s1)</h2>
