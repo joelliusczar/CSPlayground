@@ -19,8 +19,16 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            NullConditionalStuff();
+            AutoMapDemo.Demo();
             Console.ReadKey();
+        }
+
+        public static void SelectStuff()
+        {
+            var names = new[] { "Graham", "Ricter", "Salmon" }.AsQueryable();
+
+            var output = names.Select((s, i) => new { name = s, index = i }).ToList();
+
         }
 
         public static void NullConditionalStuff()
