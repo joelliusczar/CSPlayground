@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Data.EntityClient;
 using PlaygroundClasses;
 using PlaygroundOther;
+using System.Data.Entity;
 
 
 namespace CSPlayground
@@ -19,8 +20,25 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            AutoMapDemo.Demo();
+            SkipSomeEntities();
             Console.ReadKey();
+        }
+
+        public static void SkipSomeEntities()
+        {
+            Baseball_DBEntities bbe = new Baseball_DBEntities();
+            int skip = 3;
+            var result = bbe.Teams.OrderBy(t => t.LeagueFK).Skip(() => skip).ToList();
+        }
+
+        private static void EnumeratorStuff()
+        {
+            var enumer = EvenNumbers().GetEnumerator();
+            var ans = enumer.Current;
+            enumer.MoveNext();
+            ans = enumer.Current;
+            enumer.MoveNext();
+            ans = enumer.Current;
         }
 
         public static void SelectStuff()

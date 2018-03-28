@@ -213,6 +213,7 @@
     <Compile Include="Models\PaginationViewModel.cs" />
     <Compile Include="Models\Ship.cs" />
     <Compile Include="Models\ShipSummaryViewModel.cs" />
+    <Compile Include="Models\SplatterPark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthoModule.cs" />
     <Compile Include="Services\AuthoResolver.cs" />
@@ -331,6 +332,7 @@
     <Content Include="Views\Shared\ShipCard.cshtml" />
     <Content Include="Views\ShipSummary\ShipStats.cshtml" />
     <Content Include="Views\Home\TryFunc.cshtml" />
+    <Content Include="Views\Home\Splatter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

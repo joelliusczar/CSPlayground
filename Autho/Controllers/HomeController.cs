@@ -35,5 +35,15 @@ namespace Autho.Controllers
             };
             return View("TryFunc", js);
         }
+
+        public ActionResult Splatter()
+        {
+            var s = new SplatterPark {
+                SplatCount = 11,
+                SplatSoundDescription = "splort",
+                IsSticky = true
+            };
+            return View(s);
+        }
     }
 }
