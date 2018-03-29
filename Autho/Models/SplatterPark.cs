@@ -7,6 +7,7 @@ namespace Autho.Models
 {
     public class SplatterPark
     {
+        public int Id { get; set; }
         public int SplatCount { get; set; }
 
         public string SplatSoundDescription { get; set; }

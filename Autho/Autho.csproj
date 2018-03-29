@@ -214,6 +214,8 @@
     <Compile Include="Models\Ship.cs" />
     <Compile Include="Models\ShipSummaryViewModel.cs" />
     <Compile Include="Models\SplatterPark.cs" />
+    <Compile Include="Models\SplatterResult.cs" />
+    <Compile Include="Models\WhichSplatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthoModule.cs" />
     <Compile Include="Services\AuthoResolver.cs" />
@@ -333,6 +335,7 @@
     <Content Include="Views\ShipSummary\ShipStats.cshtml" />
     <Content Include="Views\Home\TryFunc.cshtml" />
     <Content Include="Views\Home\Splatter.cshtml" />
+    <Content Include="Views\Home\ChooseSplat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

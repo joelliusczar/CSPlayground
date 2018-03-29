@@ -66,6 +66,7 @@
     <Compile Include="Jenerica.cs" />
     <Compile Include="NumbersGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Silberware.cs" />
     <Compile Include="Spatula.cs" />
     <Compile Include="Statica.cs" />
     <Compile Include="StNullGuy.cs" />

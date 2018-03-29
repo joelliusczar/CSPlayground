@@ -1,0 +1,29 @@
+﻿@using Autho.Controllers;
+@model Autho.Models.WhichSplatter
+
+@{
+    ViewBag.Title = "ChooseSplat";
+}
+
+<h2>ChooseSplat</h2>
+
+@using (Html.BeginForm())
+{
+    foreach (var s in Model.SplatChoices)
+        {
+            @Html.RadioButtonFor(m => m.PickedSplark.Id, s.Id, new { id = nameof(Model.PickedSplark) + s.Id })
+            @Html.Label(nameof(Model.PickedSplark) + s.Id, s.SplatSoundDescription)
+        }
+    <button type="submit">Submit</button>
+}
+
+@using (Html.BeginForm(nameof(HomeController.SplatCup), "Home", FormMethod.Post))
+{
+    <input type="radio" name="slice" id="adam" value="adam"/>
+    <label for="adam">Choice A</label>
+    <input type="radio" name="slice" id="bruce" value="bruce"/>
+    <label for="bruce">Choice B</label>
+    <input type="radio" name="slice" id="charles" value="charles"/>
+    <label for="charles">Choice C</label>
+    <button type="submit">Second Submit</button>
+}

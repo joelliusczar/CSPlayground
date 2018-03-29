@@ -45,5 +45,36 @@ namespace Autho.Controllers
             };
             return View(s);
         }
+
+        public ActionResult ChooseSplat()
+        {
+            var s = new WhichSplatter {
+                Name = "Kevin",
+                SplatChoices = new List<SplatterPark> {
+                    new SplatterPark{ Id = 0, SplatCount = 3, SplatSoundDescription = "kadorsh",IsSticky = false},
+                    new SplatterPark{ Id = 1, SplatCount = 5, SplatSoundDescription = "bayshak",IsSticky = false},
+                    new SplatterPark{ Id = 2, SplatCount = 7, SplatSoundDescription = "barlorsk",IsSticky = false}
+                }
+            };
+
+            return View(s);
+        }
+
+        [HttpPost]
+        public ActionResult ChooseSplat(SplatterResult splatter)
+        {
+            return View(splatter);
+        }
+
+        public void SplatBlitz()
+        {
+            ;
+        }
+
+
+        public void SplatCup()
+        {
+            ;
+        }
     }
 }

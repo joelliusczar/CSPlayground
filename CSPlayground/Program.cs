@@ -20,8 +20,15 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            SkipSomeEntities();
+            EnumToList();
             Console.ReadKey();
+        }
+
+        public static void EnumToList()
+        {
+            var l0 = Enum.GetValues(typeof(Silberware));
+            var l1 = Enum.GetValues(typeof(Silberware)).Cast<Silberware>();
+            var l2 = ((Silberware[])Enum.GetValues(typeof(Silberware))).ToList();
         }
 
         public static void SkipSomeEntities()
