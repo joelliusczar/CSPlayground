@@ -8,6 +8,8 @@ namespace PlaygroundClasses
     {
         public int Mynt { get; set; }
 
+        public StNullGuy MiniNull { get; set; }
+
         public override string ToString()
         {
             return "Just nothing";

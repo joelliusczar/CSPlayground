@@ -54,6 +54,16 @@ namespace Autho.Controllers
                     new SplatterPark{ Id = 0, SplatCount = 3, SplatSoundDescription = "kadorsh",IsSticky = false},
                     new SplatterPark{ Id = 1, SplatCount = 5, SplatSoundDescription = "bayshak",IsSticky = false},
                     new SplatterPark{ Id = 2, SplatCount = 7, SplatSoundDescription = "barlorsk",IsSticky = false}
+                },
+                Mixins = new List<string> {
+                    "tar",
+                    "philbull",
+                    "riula"
+                },
+                AreSplattered = new List<bool> {
+                    true,
+                    false,
+                    true,
                 }
             };
 
@@ -61,9 +71,9 @@ namespace Autho.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChooseSplat(SplatterResult splatter)
+        public void ChooseSplat(int? splatD)
         {
-            return View(splatter);
+            ;
         }
 
         public void SplatBlitz()
@@ -73,6 +83,11 @@ namespace Autho.Controllers
 
 
         public void SplatCup()
+        {
+            ;
+        }
+
+        public void Splist(HashSet<string> zhech)
         {
             ;
         }

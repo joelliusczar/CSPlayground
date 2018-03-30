@@ -20,8 +20,44 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            EnumToList();
+            NullRefsInExpress();
             Console.ReadKey();
+        }
+
+        public static void NullRefsInExpress()
+        {
+            var lns = new List<PlaygroundClasses.StNullGuy>
+            {
+                new PlaygroundClasses.StNullGuy{
+                    Mynt = 5,
+                    MiniNull = new PlaygroundClasses.StNullGuy{
+                        Mynt = 8,
+                    }
+                },
+                new PlaygroundClasses.StNullGuy{
+                    Mynt = 6,
+                    MiniNull = new PlaygroundClasses.StNullGuy{
+                        Mynt = 9,
+                    }
+                },
+                new PlaygroundClasses.StNullGuy{
+                    Mynt = 7,
+                },
+                new PlaygroundClasses.StNullGuy{
+                    Mynt = 10,
+                    MiniNull = new PlaygroundClasses.StNullGuy{
+                        Mynt = 11,
+                    }
+                },
+                new PlaygroundClasses.StNullGuy{
+                    Mynt = 12,
+                },
+                new PlaygroundClasses.StNullGuy{
+                    Mynt = 13,
+                },
+            }.AsQueryable();
+
+           // var filtered = lns.Where(n => n.MiniNull?.Mynt > 8).ToList();
         }
 
         public static void EnumToList()

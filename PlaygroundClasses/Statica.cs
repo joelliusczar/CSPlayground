@@ -181,7 +181,6 @@ namespace PlaygroundClasses
         public static void StringAlongAsyncSingle()
         {
             Task.Run(async () => {
-                int c = 0;
                 for (int i = 0; i < 100; i++)
                 {
                     Statica.a++;

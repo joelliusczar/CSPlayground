@@ -10,20 +10,52 @@
 @using (Html.BeginForm())
 {
     foreach (var s in Model.SplatChoices)
-        {
-            @Html.RadioButtonFor(m => m.PickedSplark.Id, s.Id, new { id = nameof(Model.PickedSplark) + s.Id })
-            @Html.Label(nameof(Model.PickedSplark) + s.Id, s.SplatSoundDescription)
-        }
+    {
+        @Html.RadioButtonFor(m => m.SplatD, s.Id, new { id = nameof(Model.PickedSplark) + s.Id })
+        @Html.Label(nameof(Model.SplatD) + s.Id, s.SplatSoundDescription)
+    }
+    @Html.RadioButtonFor(m => m.SplatD, "", new { id = nameof(Model.PickedSplark) + "__" })
+    @Html.Label(nameof(Model.SplatD) + "__", "Blank")
+    <br />
+    foreach(var s in Model.Mixins.Zip(Model.AreSplattered,(s,b) => new {s,b}))
+    {
+        @Html.CheckBoxFor(m => s.b,new { id = nameof(Model.Mixins)+s.s})
+        @Html.Label(nameof(Model.Mixins) + s.s,s.s)
+    }
+
     <button type="submit">Submit</button>
 }
 
 @using (Html.BeginForm(nameof(HomeController.SplatCup), "Home", FormMethod.Post))
 {
-    <input type="radio" name="slice" id="adam" value="adam"/>
+    <input type="radio" name="slice" id="adam" value="adam" />
     <label for="adam">Choice A</label>
-    <input type="radio" name="slice" id="bruce" value="bruce"/>
+    <input type="radio" name="slice" id="bruce" value="bruce" />
     <label for="bruce">Choice B</label>
-    <input type="radio" name="slice" id="charles" value="charles"/>
+    <input type="radio" name="slice" id="charles" value="charles" />
     <label for="charles">Choice C</label>
+
+    <br />
+    <input type="checkbox" name="zhech" id="albert" value="albert" />
+    <label for="albert">Check A</label>
+    <input type="checkbox" name="zhech" id="bart" value="bart" />
+    <label for="bart">Check B</label>
+    <input type="checkbox" name="zhech" id="curtis" value="curtis" />
+    <label for="curtis">Check C</label>
+
     <button type="submit">Second Submit</button>
+
+
+}
+
+@using (Html.BeginForm(nameof(HomeController.Splist), "Home", FormMethod.Post))
+{
+    <input type="checkbox" name="zhech" id="albert" value="albert" />
+    <label for="albert">Check A</label>
+    <input type="checkbox" name="zhech" id="bart" value="bart" />
+    <label for="bart">Check B</label>
+    <input type="checkbox" name="zhech" id="curtis" value="curtis" />
+    <label for="curtis">Check C</label>
+
+    <button type="submit">Third Submit</button>
 }
