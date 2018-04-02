@@ -20,8 +20,32 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            NullRefsInExpress();
+            UnionTest();
             Console.ReadKey();
+        }
+
+        public static void UnionTest()
+        {
+            var nums1 = new int[] { 1, 3, 2, 11, 32, 7, 8 }.AsQueryable();
+            var excludo = nums1.Where(n => n != 11);
+            var nums2 = new int[] { 1, 12, 5,11,8 }.AsQueryable();
+            var uSet = nums2.Union(excludo);
+            var l = uSet.ToList();
+            
+        }
+
+        public static void ExceptTest()
+        {
+            Baseball_DBEntities entities = new Baseball_DBEntities();
+            int count = entities.Teams.Count();
+            var notSet = entities.Teams.Where(t => !t.LeagueFK.HasValue);
+            var notList = notSet.ToList();
+            var theRest = entities.Teams.Except(notSet).ToList();
+        }
+
+        public static void StrInterpolateName()
+        {
+            Console.WriteLine($"The method below this might be {nameof(NullRefsInExpress)}");
         }
 
         public static void NullRefsInExpress()

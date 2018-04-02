@@ -91,5 +91,31 @@ namespace Autho.Controllers
         {
             ;
         }
+
+        public ActionResult Duces()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public void Duces(ModelAlfred A,ModelBruce B)
+        {
+            ;
+        }
+
+        public void SlapThatAjax(Barrier barry)
+        {
+            ;
+        }
+
+        public void ConNilo(NiloModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ;
+            }
+
+            ;
+        }
     }
 }

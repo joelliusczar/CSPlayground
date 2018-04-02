@@ -31,5 +31,6 @@ namespace PlaygroundClasses
         public string Author { get; set; }
         public string DogName { get; set; }
         public int? AuthorAge { get; set; }
+        public string Afterwards { get; set; }
     }
 }
