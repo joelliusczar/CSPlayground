@@ -12,6 +12,7 @@ using System.Data.EntityClient;
 using PlaygroundClasses;
 using PlaygroundOther;
 using System.Data.Entity;
+using AltBaseball;
 
 
 namespace CSPlayground
@@ -20,8 +21,15 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            UnionTest();
+            AltBaseballTry();
             Console.ReadKey();
+        }
+
+        public static void AltBaseballTry()
+        {
+            AltBaseballConnect alt = new AltBaseballConnect();
+            var allTeamCount = alt.Teams.Count();
+            var l = alt.Teams.Where(t => t.League != null).ToList();
         }
 
         public static void UnionTest()
@@ -194,7 +202,7 @@ namespace CSPlayground
         public static void BaseballEntityStuff()
         {
             Baseball_DBEntities dbItems = new Baseball_DBEntities();
-            Team t = dbItems.Teams.First();
+            BatAndBallEF.Team t = dbItems.Teams.First();
             Console.WriteLine(t.TeamName);
         }
 

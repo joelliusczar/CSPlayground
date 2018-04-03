@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AltBaseball\AltBaseball.csproj">
+      <Project>{66d8b05f-5634-4f45-a6da-7db393ed9d51}</Project>
+      <Name>AltBaseball</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BatAndBallEF\BatAndBallEF.csproj">
       <Project>{9737b07f-210b-4176-9fae-b969acd8c969}</Project>
       <Name>BatAndBallEF</Name>
