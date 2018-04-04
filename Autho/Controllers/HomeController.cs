@@ -117,5 +117,10 @@ namespace Autho.Controllers
 
             ;
         }
+
+        public void BadStuff()
+        {
+            throw new Exception();
+        }
     }
 }
