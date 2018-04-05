@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomServo", "TomServo\TomSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AltBaseball", "AltBaseball\AltBaseball.csproj", "{66D8B05F-5634-4F45-A6DA-7DB393ED9D51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkPlayground", "WorkPlayground\WorkPlayground.csproj", "{5BD08A8E-A721-49F3-B4A4-376C22B10EB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{66D8B05F-5634-4F45-A6DA-7DB393ED9D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66D8B05F-5634-4F45-A6DA-7DB393ED9D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66D8B05F-5634-4F45-A6DA-7DB393ED9D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BD08A8E-A721-49F3-B4A4-376C22B10EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD08A8E-A721-49F3-B4A4-376C22B10EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD08A8E-A721-49F3-B4A4-376C22B10EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD08A8E-A721-49F3-B4A4-376C22B10EB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,6 +75,10 @@
       <Project>{5960287b-f605-42b8-a78a-d4c41d23cfa3}</Project>
       <Name>PlaygroundOther</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WorkPlayground\WorkPlayground.csproj">
+      <Project>{5bd08a8e-a721-49f3-b4a4-376c22b10eb1}</Project>
+      <Name>WorkPlayground</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
