@@ -13,6 +13,7 @@ using PlaygroundClasses;
 using PlaygroundOther;
 using System.Data.Entity;
 using AltBaseball;
+using WorkPlayground;
 
 
 namespace CSPlayground
@@ -21,8 +22,24 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            AltBaseballTry();
+            DateTimeDate();
             Console.ReadKey();
+        }
+
+        public static void DateTimeDate()
+        {
+            DateTime dt1 = DateTime.Now;
+            var dt2 = dt1.Date;
+            Console.WriteLine($" Compare dt1: {dt1}\n to dt2: {dt2}");
+        }
+
+        public static void DemoPropDefaultSet()
+        {
+            Console.WriteLine("First we print");
+            NumTwo n2 = new NumTwo();
+            Console.WriteLine(n2.HisFavoriteNumber);
+            Console.WriteLine("Do it again!");
+            Console.WriteLine(n2.HisFavoriteNumber);
         }
 
         public static void AltBaseballTry()
