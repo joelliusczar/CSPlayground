@@ -52,6 +52,7 @@
     <Compile Include="Bros.cs" />
     <Compile Include="Deadrace.cs" />
     <Compile Include="DeHooten.cs" />
+    <Compile Include="DictionaryToList.cs" />
     <Compile Include="Expressionisto.cs" />
     <Compile Include="Extender.cs" />
     <Compile Include="Finger.cs" />
