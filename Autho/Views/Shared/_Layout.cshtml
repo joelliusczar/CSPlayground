@@ -49,5 +49,7 @@
 
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("dumbName",required: false)
+    @Html.Hidden("after-render-section")
 </body>
 </html>

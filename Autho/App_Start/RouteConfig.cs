@@ -19,5 +19,15 @@ namespace Autho
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
+
+        public static void RegisterExtraRoutes()
+        {
+            RazorViewEngine viewEngine = (RazorViewEngine)ViewEngines.Engines
+                .Where(e => e.GetType() == typeof(RazorViewEngine)).FirstOrDefault();
+            string[] extraViewPaths = new[] {
+                "~/Views/Home/BundleExps/{0}.cshtml"
+            };
+            viewEngine.ViewLocationFormats = viewEngine.ViewLocationFormats.Union(extraViewPaths).ToArray();
+        }
     }
 }

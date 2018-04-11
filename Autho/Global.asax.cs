@@ -16,6 +16,7 @@ namespace Autho
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RouteConfig.RegisterExtraRoutes();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyResolver.SetResolver(new AuthoResolver(new AuthoModule()));
         }

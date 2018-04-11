@@ -1,0 +1,1 @@
+﻿alert("The condition is true");

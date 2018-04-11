@@ -122,5 +122,15 @@ namespace Autho.Controllers
         {
             throw new Exception();
         }
+
+        public ActionResult JsPathList()
+        {
+            return View();
+        }
+
+        public ActionResult Codish()
+        {
+            return View();
+        }
     }
 }

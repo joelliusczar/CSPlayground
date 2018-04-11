@@ -248,6 +248,9 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CustomJs\Conditional.js" />
+    <Content Include="Scripts\CustomJs\TestInclude1.js" />
+    <Content Include="Scripts\CustomJs\TestInclude2.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -339,6 +342,8 @@
     <Content Include="Views\Home\Splatter.cshtml" />
     <Content Include="Views\Home\ChooseSplat.cshtml" />
     <Content Include="Views\Home\Duces.cshtml" />
+    <Content Include="Views\Home\BundleExps\JsPathList.cshtml" />
+    <Content Include="Views\Home\BundleExps\Codish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -367,7 +372,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50032</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
