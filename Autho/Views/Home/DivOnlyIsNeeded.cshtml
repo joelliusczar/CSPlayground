@@ -1,0 +1,13 @@
+﻿@using Autho.Controllers
+@{
+    ViewBag.Title = "DivOnlyIsNeeded";
+}
+
+<h2>DivOnlyIsNeeded</h2>
+
+@using(Html.BeginForm(nameof(HomeController.DivOnlyIsNeededPost),"Home",FormMethod.Post))
+{
+    //no bueno
+    <div name="money" value="dollar, dollar bills!">money!</div>
+    <button type="submit">submit</button>
+}

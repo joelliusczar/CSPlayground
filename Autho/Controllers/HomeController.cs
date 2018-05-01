@@ -118,6 +118,8 @@ namespace Autho.Controllers
             ;
         }
 
+
+
         public void BadStuff()
         {
             throw new Exception();
@@ -131,6 +133,17 @@ namespace Autho.Controllers
         public ActionResult Codish()
         {
             return View();
+        }
+
+        public ActionResult DivOnlyIsNeeded()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DivOnlyIsNeededPost()
+        {
+            return RedirectToAction(nameof(DivOnlyIsNeeded));
         }
     }
 }

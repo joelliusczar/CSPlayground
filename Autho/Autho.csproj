@@ -344,6 +344,7 @@
     <Content Include="Views\Home\Duces.cshtml" />
     <Content Include="Views\Home\BundleExps\JsPathList.cshtml" />
     <Content Include="Views\Home\BundleExps\Codish.cshtml" />
+    <Content Include="Views\Home\DivOnlyIsNeeded.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -372,11 +373,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50032</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50032/</IISUrl>
+          <IISUrl>http://localhost:5033/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
