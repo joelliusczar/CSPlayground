@@ -9,5 +9,6 @@ namespace Autho.Models
     {
         public string Title { get; set; }
         public int Kills { get; set; }
+        public int? Id { get; set; }
     }
 }

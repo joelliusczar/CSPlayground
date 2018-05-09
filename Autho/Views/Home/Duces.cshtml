@@ -8,19 +8,20 @@
 
 @using (Html.BeginForm())
 {
-    @Html.Hidden("Name", "Carl")
-    @Html.Hidden("LifeQuote", "Perspective is worth 80 IQ points")
+    @Html.Hidden("A.Name", "Carl")
+    @Html.Hidden("A.LifeQuote", "Perspective is worth 80 IQ points")
     @Html.Hidden("Title", "Pancake King")
     @Html.Hidden("Kills", 12)
+    @Html.Hidden("A.Id", 44)
     <button type="submit">Submit</button>
 }
 
 <button type="button" id="slap">Slap that Ajax</button>
 <br />
 @Html.RadioButton("generous", "yes", false, new { id = "gen-yes" })
-@Html.Label("gen-yes","Yes")
+@Html.Label("gen-yes", "Yes")
 @Html.RadioButton("generous", "no", false, new { id = "gen-no" })
-@Html.Label("gen-no","No")
+@Html.Label("gen-no", "No")
 <button type="button" id="zilch">Give them nothing</button>
 <script>
     $(function () {
