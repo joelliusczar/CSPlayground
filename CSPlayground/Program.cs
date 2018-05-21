@@ -22,8 +22,25 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            DateTimeDate();
+            GetAllDumbs();
             Console.ReadKey();
+        }
+
+        public static void GetAllDumbs()
+        {
+        
+            BigHead bigHead = new BigHead();
+            //.Where(p => p.DeclaringType == typeof(BigHead))
+            var ps = bigHead.GetType()
+                .GetProperties().Where(p => {
+                    var m = p.GetCustomAttributes<DumbAttribute>().Count() > 0;
+                    return m;
+                    }).OrderBy(p => {
+
+                        var i = p.GetCustomAttribute<DumbAttribute>().TestValue;
+                        return i;
+                    }).ToList();
+            ;
         }
 
         public static void DateTimeDate()

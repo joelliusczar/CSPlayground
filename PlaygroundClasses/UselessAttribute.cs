@@ -10,4 +10,16 @@ namespace PlaygroundClasses
     public class UselessAttribute: System.Attribute
     {
     }
+
+    [System.AttributeUsage(System.AttributeTargets.All)]
+    public class DumbAttribute: System.Attribute
+    {
+        public int TestValue { get; set; } 
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.All)]
+    public class AnOtroAttribute : System.Attribute
+    {
+
+    }
 }
