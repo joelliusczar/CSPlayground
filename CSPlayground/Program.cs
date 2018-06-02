@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
-using BatAndBallEF;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.EntityClient;
 using PlaygroundClasses;
 using PlaygroundOther;
 using System.Data.Entity;
-using AltBaseball;
+using KenGriffeyJrEF;
 using WorkPlayground;
 
 
@@ -59,12 +58,12 @@ namespace CSPlayground
             Console.WriteLine(n2.HisFavoriteNumber);
         }
 
-        public static void AltBaseballTry()
-        {
-            AltBaseballConnect alt = new AltBaseballConnect();
-            var allTeamCount = alt.Teams.Count();
-            var l = alt.Teams.Where(t => t.League != null).ToList();
-        }
+        //public static void AltBaseballTry()
+        //{
+        //    AltBaseballConnect alt = new AltBaseballConnect();
+        //    var allTeamCount = alt.Teams.Count();
+        //    var l = alt.Teams.Where(t => t.League != null).ToList();
+        //}
 
         public static void UnionTest()
         {
@@ -78,9 +77,9 @@ namespace CSPlayground
 
         public static void ExceptTest()
         {
-            Baseball_DBEntities entities = new Baseball_DBEntities();
+            KenGriffeyJrDbEntities entities = new KenGriffeyJrDbEntities();
             int count = entities.Teams.Count();
-            var notSet = entities.Teams.Where(t => !t.LeagueFK.HasValue);
+            var notSet = entities.Teams.Where(t => !t.LeagueFk.HasValue);
             var notList = notSet.ToList();
             var theRest = entities.Teams.Except(notSet).ToList();
         }
@@ -135,9 +134,9 @@ namespace CSPlayground
 
         public static void SkipSomeEntities()
         {
-            Baseball_DBEntities bbe = new Baseball_DBEntities();
+            KenGriffeyJrDbEntities bbe = new KenGriffeyJrDbEntities();
             int skip = 3;
-            var result = bbe.Teams.OrderBy(t => t.LeagueFK).Skip(() => skip).ToList();
+            var result = bbe.Teams.OrderBy(t => t.LeagueFk).Skip(() => skip).ToList();
         }
 
         private static void EnumeratorStuff()
@@ -185,7 +184,7 @@ namespace CSPlayground
 
         public static void ConcatEFInterceptTest()
         {
-            Baseball_DBEntities dbItems = new Baseball_DBEntities();
+            KenGriffeyJrDbEntities dbItems = new KenGriffeyJrDbEntities();
             var items =  from team in dbItems.Teams
             select new { exName = "Team:" + team.TeamName };
             Console.WriteLine(items.First().exName);
@@ -235,8 +234,8 @@ namespace CSPlayground
 
         public static void BaseballEntityStuff()
         {
-            Baseball_DBEntities dbItems = new Baseball_DBEntities();
-            BatAndBallEF.Team t = dbItems.Teams.First();
+            KenGriffeyJrDbEntities dbItems = new KenGriffeyJrDbEntities();
+            Team t = dbItems.Teams.First();
             Console.WriteLine(t.TeamName);
         }
 
