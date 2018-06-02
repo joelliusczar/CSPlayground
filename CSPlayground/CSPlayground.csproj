@@ -64,6 +64,10 @@
       <Project>{ece54152-e5a3-472a-9f86-a685d6842103}</Project>
       <Name>KenGriffeyJrEF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KenGriffeyJrShips\KenGriffeyJrShips.csproj">
+      <Project>{1dd10769-30cf-429f-a44e-8b6f813f8418}</Project>
+      <Name>KenGriffeyJrShips</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlaygroundClasses\PlaygroundClasses.csproj">
       <Project>{5fb0a854-34d9-4d30-a2d4-82d37adb8bfa}</Project>
       <Name>PlaygroundClasses</Name>

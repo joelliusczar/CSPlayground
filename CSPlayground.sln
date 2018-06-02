@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaLaLayout", "LaLaLayout\La
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KenGriffeyJrEF", "KenGriffeyJrEF\KenGriffeyJrEF.csproj", "{ECE54152-E5A3-472A-9F86-A685D6842103}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KenGriffeyJrShips", "KenGriffeyJrShips\KenGriffeyJrShips.csproj", "{1DD10769-30CF-429F-A44E-8B6F813F8418}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{ECE54152-E5A3-472A-9F86-A685D6842103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECE54152-E5A3-472A-9F86-A685D6842103}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECE54152-E5A3-472A-9F86-A685D6842103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD10769-30CF-429F-A44E-8B6F813F8418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD10769-30CF-429F-A44E-8B6F813F8418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD10769-30CF-429F-A44E-8B6F813F8418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD10769-30CF-429F-A44E-8B6F813F8418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

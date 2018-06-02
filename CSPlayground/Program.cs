@@ -12,6 +12,7 @@ using PlaygroundClasses;
 using PlaygroundOther;
 using System.Data.Entity;
 using KenGriffeyJrEF;
+using KenGriffeyJrShips;
 using WorkPlayground;
 
 
@@ -58,12 +59,12 @@ namespace CSPlayground
             Console.WriteLine(n2.HisFavoriteNumber);
         }
 
-        //public static void AltBaseballTry()
-        //{
-        //    AltBaseballConnect alt = new AltBaseballConnect();
-        //    var allTeamCount = alt.Teams.Count();
-        //    var l = alt.Teams.Where(t => t.League != null).ToList();
-        //}
+        public static void AltBaseballTry()
+        {
+            KenGriffeyJrShipsDbEntities alt = new KenGriffeyJrShipsDbEntities();
+            var allTeamCount = alt.Teams.Count();
+            var l = alt.Teams.Where(t => t.League != null).ToList();
+        }
 
         public static void UnionTest()
         {
@@ -235,7 +236,7 @@ namespace CSPlayground
         public static void BaseballEntityStuff()
         {
             KenGriffeyJrDbEntities dbItems = new KenGriffeyJrDbEntities();
-            Team t = dbItems.Teams.First();
+            KenGriffeyJrEF.Team t = dbItems.Teams.First();
             Console.WriteLine(t.TeamName);
         }
 
