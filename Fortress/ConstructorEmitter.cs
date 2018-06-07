@@ -55,8 +55,18 @@ namespace Fortress
             if(!this.ImplementedByRunTime && this.CodeBuilder.IsEmpty)
             {
                 this.CodeBuilder.InvokeBaseConstructor();
-                this.CodeBuilder.AddStatement(new )
+                this.CodeBuilder.AddStatement(new ReturnStatement());
             }
+        }
+
+        public virtual void Generate()
+        {
+            if(ImplementedByRunTime)
+            {
+                return;
+            }
+
+            //TODO
         }
 
     }

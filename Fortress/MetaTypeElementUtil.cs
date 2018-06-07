@@ -13,7 +13,7 @@ namespace Fortress
         {
             if(sourceType.GetTypeInfo().IsGenericType)
             {
-                StringBuilder nameBuilder = new StringBuilder);
+                StringBuilder nameBuilder = new StringBuilder();
                 nameBuilder.AppendNameOf(sourceType);
                 nameBuilder.Append('.');
                 nameBuilder.Append(name);

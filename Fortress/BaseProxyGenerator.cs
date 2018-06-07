@@ -73,10 +73,7 @@ namespace Fortress
             return this.Scope.GetFromCache(key);
         }
 
-        protected void AddToCache(CacheKey key, Type type)
-        {
-            this.Scope.RegisterInCache(key, type);
-        }
+        
 
         protected Type ObtainProxyType(CacheKey cacheKey,Func<string,INamingScope,Type> factory)
         {
@@ -115,21 +112,25 @@ namespace Fortress
             else { }
         }
 
-        protected void AddMappingNoCheck(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
+        protected void AddMapping(Type @interface, ITypeContributor implementer, IDictionary<Type, ITypeContributor> mapping)
         {
             Debug.Assert(implementer != null, "implementer is null");
             Debug.Assert(@interface != null, "@interface is null");
-            Debug.Assert(@interface.GetTypeInfo().IsInterface, "@interface.IsInterface");
-
-            mapping.Add(@interface, implementer);
-        }
-
-        protected void AddMapping(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
-        {
-            if(!mapping.ContainsKey(@interface))
+            Debug.Assert(@interface.GetTypeInfo().IsInterface, "@interface is an interface");
+            if (!mapping.ContainsKey(@interface))
             {
                 this.AddMappingNoCheck(@interface, implementer, mapping);
             }
+        }
+
+        protected void AddMappingNoCheck(Type @interface, ITypeContributor implementer, IDictionary<Type,ITypeContributor> mapping)
+        {
+            mapping.Add(@interface, implementer);
+        }
+
+        protected void AddToCache(CacheKey key, Type type)
+        {
+            this.Scope.RegisterInCache(key, type);
         }
 
         protected virtual ClassEmitter BuildClassEmitter(string typeName, Type parentType, IEnumerable<Type> interfaces)
@@ -156,11 +157,7 @@ namespace Fortress
 #endif
         }
 
-        protected FieldReference CreateOptionsField(ClassEmitter emitter)
-        {
-            return emitter.CreateStaticField("proxyGenerationOptions", typeof(ProxyGenerationOptions));
-
-        }
+        
 
         protected void CreateSelectorField(ClassEmitter emitter)
         {
@@ -179,7 +176,11 @@ namespace Fortress
             //serialization stuff
         }
 
-        protected 
+        protected FieldReference CreateOptionsField(ClassEmitter emitter)
+        {
+            return emitter.CreateStaticField("proxyGenerationOptions", typeof(ProxyGenerationOptions));
+
+        }
 
     }
 }
