@@ -64,6 +64,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFInterception.cs" />
+    <Compile Include="Fan.cs">
+      <DependentUpon>ShipsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KenGriffeyJrShipsDbEntities.CSPlayground.cs" />
     <Compile Include="League.cs">
       <DependentUpon>ShipsModel.tt</DependentUpon>
     </Compile>
@@ -96,6 +101,10 @@
   <ItemGroup>
     <Content Include="KenGriffeyJrShipsDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="KenGriffeyJrShipsDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>KenGriffeyJrShipsDb.mdf</DependentUpon>
     </Content>
     <Content Include="ShipsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

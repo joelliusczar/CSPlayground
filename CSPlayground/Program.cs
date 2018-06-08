@@ -22,8 +22,26 @@ namespace CSPlayground
     {
         internal static void Main(string[] args)
         {
-            GetAllDumbs();
+            SaveFan();
+            Console.WriteLine("Done");
             Console.ReadKey();
+        }
+
+        public static void SaveFan()
+        {
+            var ents = new KenGriffeyJrShipsDbEntities();
+            var fan = new Fan();
+            fan.FanName = "R. Bommon";
+            fan.Team = ents.Teams.Single(t => t.TeamPk == 1);
+            fan.Player = fan.Team.Players.First(p => p.PositionFK == 2);
+            ents.Fans.Add(fan);
+            fan = new Fan();
+            fan.FanName = "B. Simpson";
+            var team = ents.Teams.Single(t => t.TeamPk == 2);
+            team.Fans.Add(fan);
+            team.Players.First().Fans.Add(fan);
+            int changes = ents.SaveChanges();
+            ;
         }
 
         public static void GetAllDumbs()

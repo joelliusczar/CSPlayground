@@ -18,6 +18,7 @@ namespace KenGriffeyJrShips
         public Team()
         {
             this.Players = new HashSet<Player>();
+            this.Fans = new HashSet<Fan>();
         }
     
         public int TeamPk { get; set; }
@@ -28,5 +29,7 @@ namespace KenGriffeyJrShips
         public virtual League League { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Players { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Fan> Fans { get; set; }
     }
 }

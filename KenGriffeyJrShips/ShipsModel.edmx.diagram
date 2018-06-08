@@ -12,6 +12,9 @@
         <AssociationConnector Association="KenGriffeyJrShipsDbModel.FK_Team_ToLeague" ManuallyRouted="false" />
         <AssociationConnector Association="KenGriffeyJrShipsDbModel.FK_Player_ToPosition" ManuallyRouted="false" />
         <AssociationConnector Association="KenGriffeyJrShipsDbModel.FK_Player_ToTeam" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KenGriffeyJrShipsDbModel.Fan" Width="1.5" PointX="7.5" PointY="1.25" />
+        <AssociationConnector Association="KenGriffeyJrShipsDbModel.FK_Fan_ToPlayer" />
+        <AssociationConnector Association="KenGriffeyJrShipsDbModel.FK_Fan_ToTeam" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
