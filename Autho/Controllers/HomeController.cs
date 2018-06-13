@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Autho.Models;
+using Autho.Services;
 
 namespace Autho.Controllers
 {
@@ -144,6 +146,23 @@ namespace Autho.Controllers
         public ActionResult DivOnlyIsNeededPost()
         {
             return RedirectToAction(nameof(DivOnlyIsNeeded));
+        }
+
+        public ActionResult KeepWaiting() => View();
+
+        [HttpPost]
+        public ActionResult KeepWaitingRun()
+        {
+            Task.Run(() => {
+                lock(StaticVars.LockOb)
+                {
+                    StaticVars.IsReallyLocked = true;
+                    Task.Delay(120000).Wait();
+                    StaticVars.IsReallyLocked = false;
+                }
+            });
+
+            return View("KeepWaiting");
         }
     }
 }

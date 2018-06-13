@@ -1,0 +1,17 @@
+﻿@using Autho.Services
+@using Autho.Controllers
+
+@if (StaticVars.IsReallyLocked)
+{
+    <h2>KeepWaiting</h2>
+}
+else
+{
+    using (Html.BeginForm(nameof(HomeController.KeepWaitingRun), "Home", FormMethod.Post))
+    {
+        <button type="submit">Start waiting.</button>
+    }
+}
+
+
+

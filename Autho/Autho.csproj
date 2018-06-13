@@ -226,6 +226,7 @@
     <Compile Include="Services\IShipProvider.cs" />
     <Compile Include="Services\NullWeb.cs" />
     <Compile Include="Services\ShipProvider.cs" />
+    <Compile Include="Services\StaticVars.cs" />
     <Compile Include="Services\StNull.cs" />
     <Compile Include="Services\TriumphHtmlHelpers.cs" />
     <Compile Include="Startup.cs" />
@@ -345,6 +346,7 @@
     <Content Include="Views\Home\BundleExps\JsPathList.cshtml" />
     <Content Include="Views\Home\BundleExps\Codish.cshtml" />
     <Content Include="Views\Home\DivOnlyIsNeeded.cshtml" />
+    <Content Include="Views\Home\KeepWaiting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
