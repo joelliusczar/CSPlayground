@@ -17,19 +17,19 @@ namespace KenGriffeyJrShips
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Team()
         {
-            this.Players = new HashSet<Player>();
             this.Fans = new HashSet<Fan>();
+            this.Players = new HashSet<Player>();
         }
     
-        public int TeamPk { get; set; }
+        public int TeamPK { get; set; }
         public string TeamName { get; set; }
         public Nullable<decimal> SalaryCap { get; set; }
-        public Nullable<int> LeagueFk { get; set; }
+        public Nullable<int> LeagueFK { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Fan> Fans { get; set; }
         public virtual League League { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Players { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fan> Fans { get; set; }
     }
 }

@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -64,57 +65,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseballShipsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseballShipsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseballShipsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseballShipsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseballShipsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseballShipsModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="EFInterception.cs" />
     <Compile Include="Fan.cs">
-      <DependentUpon>ShipsModel.tt</DependentUpon>
+      <DependentUpon>BaseballShipsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="KenGriffeyJrShipsDbEntities.CSPlayground.cs" />
     <Compile Include="League.cs">
-      <DependentUpon>ShipsModel.tt</DependentUpon>
+      <DependentUpon>BaseballShipsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LKPosition.cs">
-      <DependentUpon>ShipsModel.tt</DependentUpon>
+      <DependentUpon>BaseballShipsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Player.cs">
-      <DependentUpon>ShipsModel.tt</DependentUpon>
+      <DependentUpon>BaseballShipsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShipsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShipsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ShipsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShipsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ShipsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShipsModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Team.cs">
-      <DependentUpon>ShipsModel.tt</DependentUpon>
+      <DependentUpon>BaseballShipsModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="KenGriffeyJrShipsDb.mdf">
+    <Content Include="BaseballShipsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaseballShipsModel.edmx</DependentUpon>
+      <LastGenOutput>BaseballShipsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BaseballShipsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaseballShipsModel.edmx</DependentUpon>
+      <LastGenOutput>BaseballShipsModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="KenGriffeyJrDbShips.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="KenGriffeyJrShipsDb_log.ldf">
+    <Content Include="KenGriffeyJrDbShips_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>KenGriffeyJrShipsDb.mdf</DependentUpon>
-    </Content>
-    <Content Include="ShipsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ShipsModel.Context.cs</LastGenOutput>
-      <DependentUpon>ShipsModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="ShipsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShipsModel.edmx</DependentUpon>
-      <LastGenOutput>ShipsModel.cs</LastGenOutput>
+      <DependentUpon>KenGriffeyJrDbShips.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -130,17 +131,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ShipsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShipsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="ShipsModel.edmx.diagram">
-      <DependentUpon>ShipsModel.edmx</DependentUpon>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="BaseballShipsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BaseballShipsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BaseballShipsModel.edmx.diagram">
+      <DependentUpon>BaseballShipsModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

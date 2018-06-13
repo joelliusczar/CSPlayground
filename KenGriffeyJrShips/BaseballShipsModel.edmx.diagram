@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0eb786c52b4446d9ee906178c1a6447" Name="Diagram1">
+        <EntityTypeShape EntityType="KenGriffeyJrDbShipsModel.Fan" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KenGriffeyJrDbShipsModel.League" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KenGriffeyJrDbShipsModel.LKPosition" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KenGriffeyJrDbShipsModel.Player" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KenGriffeyJrDbShipsModel.Team" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="KenGriffeyJrDbShipsModel.FK_Fan_ToPlayer" ManuallyRouted="false" />
+        <AssociationConnector Association="KenGriffeyJrDbShipsModel.FK_Fan_ToTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="KenGriffeyJrDbShipsModel.FK_Team_ToLeague" ManuallyRouted="false" />
+        <AssociationConnector Association="KenGriffeyJrDbShipsModel.FK_Player_ToPosition" ManuallyRouted="false" />
+        <AssociationConnector Association="KenGriffeyJrDbShipsModel.FK_Player_ToTeam" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

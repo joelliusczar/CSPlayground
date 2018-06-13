@@ -29,15 +29,15 @@ namespace CSPlayground
 
         public static void SaveFan()
         {
-            var ents = new KenGriffeyJrShipsDbEntities();
+            var ents = new KenGriffeyJrDbShipsEntities();
             var fan = new Fan();
             fan.FanName = "R. Bommon";
-            fan.Team = ents.Teams.Single(t => t.TeamPk == 1);
+            fan.Team = ents.Teams.Single(t => t.TeamPK == 1);
             fan.Player = fan.Team.Players.First(p => p.PositionFK == 2);
             ents.Fans.Add(fan);
             fan = new Fan();
             fan.FanName = "B. Simpson";
-            var team = ents.Teams.Single(t => t.TeamPk == 2);
+            var team = ents.Teams.Single(t => t.TeamPK == 2);
             team.Fans.Add(fan);
             team.Players.First().Fans.Add(fan);
             int changes = ents.SaveChanges();
@@ -79,7 +79,7 @@ namespace CSPlayground
 
         public static void AltBaseballTry()
         {
-            KenGriffeyJrShipsDbEntities alt = new KenGriffeyJrShipsDbEntities();
+            KenGriffeyJrDbShipsEntities alt = new KenGriffeyJrDbShipsEntities();
             var allTeamCount = alt.Teams.Count();
             var l = alt.Teams.Where(t => t.League != null).ToList();
         }

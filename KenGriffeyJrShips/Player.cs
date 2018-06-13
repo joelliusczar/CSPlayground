@@ -26,9 +26,9 @@ namespace KenGriffeyJrShips
         public Nullable<int> TeamFK { get; set; }
         public Nullable<int> PositionFK { get; set; }
     
-        public virtual LKPosition LKPosition { get; set; }
-        public virtual Team Team { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fan> Fans { get; set; }
+        public virtual LKPosition LKPosition { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

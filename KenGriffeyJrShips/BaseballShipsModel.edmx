@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KenGriffeyJrDbShipsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Fan">
+          <Key>
+            <PropertyRef Name="FanPK" />
+          </Key>
+          <Property Name="FanPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FanName" Type="varchar" MaxLength="50" />
+          <Property Name="FavTeamFK" Type="int" />
+          <Property Name="FavPlayerFK" Type="int" />
+        </EntityType>
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="LeaguePK" />
+          </Key>
+          <Property Name="LeaguePK" Type="int" Nullable="false" />
+          <Property Name="LeagueName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LKPosition">
+          <Key>
+            <PropertyRef Name="LKPositionPK" />
+          </Key>
+          <Property Name="LKPositionPK" Type="int" Nullable="false" />
+          <Property Name="PositionName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerPK" />
+          </Key>
+          <Property Name="PlayerPK" Type="int" Nullable="false" />
+          <Property Name="PlayerName" Type="varchar" MaxLength="50" />
+          <Property Name="Salary" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TeamFK" Type="int" />
+          <Property Name="PositionFK" Type="int" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamPK" />
+          </Key>
+          <Property Name="TeamPK" Type="int" Nullable="false" />
+          <Property Name="TeamName" Type="varchar" MaxLength="50" />
+          <Property Name="SalaryCap" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LeagueFK" Type="int" />
+        </EntityType>
+        <Association Name="FK_Fan_ToPlayer">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Fan" Type="Self.Fan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerPK" />
+            </Principal>
+            <Dependent Role="Fan">
+              <PropertyRef Name="FavPlayerFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fan_ToTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Fan" Type="Self.Fan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamPK" />
+            </Principal>
+            <Dependent Role="Fan">
+              <PropertyRef Name="FavTeamFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_ToPosition">
+          <End Role="LKPosition" Type="Self.LKPosition" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LKPosition">
+              <PropertyRef Name="LKPositionPK" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="PositionFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_ToTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamPK" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="TeamFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Team_ToLeague">
+          <End Role="League" Type="Self.League" Multiplicity="0..1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="LeaguePK" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="LeagueFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KenGriffeyJrDbShipsModelStoreContainer">
+          <EntitySet Name="Fan" EntityType="Self.Fan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="League" EntityType="Self.League" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LKPosition" EntityType="Self.LKPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Fan_ToPlayer" Association="Self.FK_Fan_ToPlayer">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Fan" EntitySet="Fan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fan_ToTeam" Association="Self.FK_Fan_ToTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Fan" EntitySet="Fan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_ToPosition" Association="Self.FK_Player_ToPosition">
+            <End Role="LKPosition" EntitySet="LKPosition" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_ToTeam" Association="Self.FK_Player_ToTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_ToLeague" Association="Self.FK_Team_ToLeague">
+            <End Role="League" EntitySet="League" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KenGriffeyJrDbShipsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Fan">
+          <Key>
+            <PropertyRef Name="FanPK" />
+          </Key>
+          <Property Name="FanPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FanName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FavTeamFK" Type="Int32" />
+          <Property Name="FavPlayerFK" Type="Int32" />
+          <NavigationProperty Name="Player" Relationship="Self.FK_Fan_ToPlayer" FromRole="Fan" ToRole="Player" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Fan_ToTeam" FromRole="Fan" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="LeaguePK" />
+          </Key>
+          <Property Name="LeaguePK" Type="Int32" Nullable="false" />
+          <Property Name="LeagueName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK_Team_ToLeague" FromRole="League" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="LKPosition">
+          <Key>
+            <PropertyRef Name="LKPositionPK" />
+          </Key>
+          <Property Name="LKPositionPK" Type="Int32" Nullable="false" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Players" Relationship="Self.FK_Player_ToPosition" FromRole="LKPosition" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerPK" />
+          </Key>
+          <Property Name="PlayerPK" Type="Int32" Nullable="false" />
+          <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TeamFK" Type="Int32" />
+          <Property Name="PositionFK" Type="Int32" />
+          <NavigationProperty Name="Fans" Relationship="Self.FK_Fan_ToPlayer" FromRole="Player" ToRole="Fan" />
+          <NavigationProperty Name="LKPosition" Relationship="Self.FK_Player_ToPosition" FromRole="Player" ToRole="LKPosition" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Player_ToTeam" FromRole="Player" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamPK" />
+          </Key>
+          <Property Name="TeamPK" Type="Int32" Nullable="false" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SalaryCap" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LeagueFK" Type="Int32" />
+          <NavigationProperty Name="Fans" Relationship="Self.FK_Fan_ToTeam" FromRole="Team" ToRole="Fan" />
+          <NavigationProperty Name="League" Relationship="Self.FK_Team_ToLeague" FromRole="Team" ToRole="League" />
+          <NavigationProperty Name="Players" Relationship="Self.FK_Player_ToTeam" FromRole="Team" ToRole="Player" />
+        </EntityType>
+        <Association Name="FK_Fan_ToPlayer">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="Fan" Type="Self.Fan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerPK" />
+            </Principal>
+            <Dependent Role="Fan">
+              <PropertyRef Name="FavPlayerFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fan_ToTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Fan" Type="Self.Fan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamPK" />
+            </Principal>
+            <Dependent Role="Fan">
+              <PropertyRef Name="FavTeamFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Team_ToLeague">
+          <End Role="League" Type="Self.League" Multiplicity="0..1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="LeaguePK" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="LeagueFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_ToPosition">
+          <End Role="LKPosition" Type="Self.LKPosition" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LKPosition">
+              <PropertyRef Name="LKPositionPK" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="PositionFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_ToTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamPK" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="TeamFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KenGriffeyJrDbShipsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fans" EntityType="Self.Fan" />
+          <EntitySet Name="Leagues" EntityType="Self.League" />
+          <EntitySet Name="LKPositions" EntityType="Self.LKPosition" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <AssociationSet Name="FK_Fan_ToPlayer" Association="Self.FK_Fan_ToPlayer">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Fan" EntitySet="Fans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fan_ToTeam" Association="Self.FK_Fan_ToTeam">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Fan" EntitySet="Fans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_ToLeague" Association="Self.FK_Team_ToLeague">
+            <End Role="League" EntitySet="Leagues" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_ToPosition" Association="Self.FK_Player_ToPosition">
+            <End Role="LKPosition" EntitySet="LKPositions" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_ToTeam" Association="Self.FK_Player_ToTeam">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Player" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KenGriffeyJrDbShipsModelStoreContainer" CdmEntityContainer="KenGriffeyJrDbShipsEntities">
+          <EntitySetMapping Name="Fans">
+            <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.Fan">
+              <MappingFragment StoreEntitySet="Fan">
+                <ScalarProperty Name="FanPK" ColumnName="FanPK" />
+                <ScalarProperty Name="FanName" ColumnName="FanName" />
+                <ScalarProperty Name="FavTeamFK" ColumnName="FavTeamFK" />
+                <ScalarProperty Name="FavPlayerFK" ColumnName="FavPlayerFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leagues">
+            <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.League">
+              <MappingFragment StoreEntitySet="League">
+                <ScalarProperty Name="LeaguePK" ColumnName="LeaguePK" />
+                <ScalarProperty Name="LeagueName" ColumnName="LeagueName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LKPositions">
+            <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.LKPosition">
+              <MappingFragment StoreEntitySet="LKPosition">
+                <ScalarProperty Name="LKPositionPK" ColumnName="LKPositionPK" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="PlayerPK" ColumnName="PlayerPK" />
+                <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="TeamFK" ColumnName="TeamFK" />
+                <ScalarProperty Name="PositionFK" ColumnName="PositionFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="TeamPK" ColumnName="TeamPK" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="SalaryCap" ColumnName="SalaryCap" />
+                <ScalarProperty Name="LeagueFK" ColumnName="LeagueFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

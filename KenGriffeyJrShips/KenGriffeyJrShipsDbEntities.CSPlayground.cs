@@ -7,11 +7,11 @@ using System.Data.Entity.Infrastructure.Interception;
 
 namespace KenGriffeyJrShips
 {
-    public partial class KenGriffeyJrShipsDbEntities
+    public partial class KenGriffeyJrDbShipsEntities
     {
-        public static KenGriffeyJrShipsDbEntities GetNew()
+        public static KenGriffeyJrDbShipsEntities GetNew()
         {
-            KenGriffeyJrShipsDbEntities instance = new KenGriffeyJrShipsDbEntities();
+            KenGriffeyJrDbShipsEntities instance = new KenGriffeyJrDbShipsEntities();
             instance.SetupInterceptors();
             return instance;
         }
