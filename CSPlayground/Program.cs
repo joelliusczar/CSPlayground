@@ -31,13 +31,13 @@ namespace CSPlayground
         {
             var ents = new KenGriffeyJrDbShipsEntities();
             var fan = new Fan();
-            fan.FanName = "R. Bommon";
+            fan.FanName = "D.Dudson";
             fan.Team = ents.Teams.Single(t => t.TeamPK == 1);
             fan.Player = fan.Team.Players.First(p => p.PositionFK == 2);
             ents.Fans.Add(fan);
             fan = new Fan();
-            fan.FanName = "B. Simpson";
-            var team = ents.Teams.Single(t => t.TeamPK == 2);
+            fan.FanName = "A. Vandelay";
+            var team = ents.Teams.Single(t => t.TeamPK == 3);
             team.Fans.Add(fan);
             team.Players.First().Fans.Add(fan);
             int changes = ents.SaveChanges();

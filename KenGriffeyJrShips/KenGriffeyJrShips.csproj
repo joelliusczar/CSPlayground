@@ -110,13 +110,6 @@
       <DependentUpon>BaseballShipsModel.edmx</DependentUpon>
       <LastGenOutput>BaseballShipsModel.cs</LastGenOutput>
     </Content>
-    <Content Include="KenGriffeyJrDbShips.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="KenGriffeyJrDbShips_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>KenGriffeyJrDbShips.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
