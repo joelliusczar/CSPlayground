@@ -120,6 +120,11 @@ namespace Autho.Controllers
             ;
         }
 
+        [HttpPost]
+        public void DropTest()
+        {
+            ;
+        }
 
 
         public void BadStuff()

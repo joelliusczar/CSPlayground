@@ -59,3 +59,15 @@
 
     <button type="submit">Third Submit</button>
 }
+
+@using (Html.BeginForm(nameof(HomeController.DropTest), "Home", FormMethod.Post))
+{
+    var choices = new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } };
+    choices.AddRange(Model.SplatChoices.Select(s => new SelectListItem { Text = s.SplatSoundDescription, Value = s.Id.ToString() }));
+
+    var selectChoices = new SelectList(choices );
+
+    @Html.DropDownList("splatDb",choices)
+    @Html.DropDownListFor(m => m.PickedSplark,choices)
+    <button type="submit">Drorpdown</button>
+}
