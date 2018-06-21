@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KenGriffeyJrDbShipsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KenGriffeyJrDbShipsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Fan">
           <Key>
             <PropertyRef Name="FanPK" />
@@ -38,6 +38,17 @@
           <Property Name="TeamFK" Type="int" />
           <Property Name="PositionFK" Type="int" />
         </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="StadiumPK" />
+          </Key>
+          <Property Name="StadiumPK" Type="int" Nullable="false" />
+          <Property Name="StadiumName" Type="varchar" MaxLength="200" />
+          <Property Name="SeatMax" Type="int" />
+          <Property Name="HasDome" Type="bit" />
+          <Property Name="DateBuilt" Type="date" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamPK" />
@@ -46,6 +57,7 @@
           <Property Name="TeamName" Type="varchar" MaxLength="50" />
           <Property Name="SalaryCap" Type="decimal" Precision="18" Scale="0" />
           <Property Name="LeagueFK" Type="int" />
+          <Property Name="StadiumFK" Type="int" />
         </EntityType>
         <Association Name="FK_Fan_ToPlayer">
           <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
@@ -107,11 +119,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Team_ToStadium">
+          <End Role="Stadium" Type="Self.Stadium" Multiplicity="0..1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadium">
+              <PropertyRef Name="StadiumPK" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="StadiumFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KenGriffeyJrDbShipsModelStoreContainer">
           <EntitySet Name="Fan" EntityType="Self.Fan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="League" EntityType="Self.League" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LKPosition" EntityType="Self.LKPosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadium" EntityType="Self.Stadium" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Fan_ToPlayer" Association="Self.FK_Fan_ToPlayer">
             <End Role="Player" EntitySet="Player" />
@@ -133,9 +158,12 @@
             <End Role="League" EntitySet="League" />
             <End Role="Team" EntitySet="Team" />
           </AssociationSet>
+          <AssociationSet Name="FK_Team_ToStadium" Association="Self.FK_Team_ToStadium">
+            <End Role="Stadium" EntitySet="Stadium" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KenGriffeyJrDbShipsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -190,6 +218,8 @@
           <NavigationProperty Name="Fans" Relationship="Self.FK_Fan_ToTeam" FromRole="Team" ToRole="Fan" />
           <NavigationProperty Name="League" Relationship="Self.FK_Team_ToLeague" FromRole="Team" ToRole="League" />
           <NavigationProperty Name="Players" Relationship="Self.FK_Player_ToTeam" FromRole="Team" ToRole="Player" />
+          <Property Name="StadiumFK" Type="Int32" />
+          <NavigationProperty Name="Stadium" Relationship="KenGriffeyJrDbShipsModel.FK_Team_ToStadium" FromRole="Team" ToRole="Stadium" />
         </EntityType>
         <Association Name="FK_Fan_ToPlayer">
           <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
@@ -277,7 +307,36 @@
             <End Role="Team" EntitySet="Teams" />
             <End Role="Player" EntitySet="Players" />
           </AssociationSet>
+          <EntitySet Name="Stadia" EntityType="KenGriffeyJrDbShipsModel.Stadium" />
+          <AssociationSet Name="FK_Team_ToStadium" Association="KenGriffeyJrDbShipsModel.FK_Team_ToStadium">
+            <End Role="Stadium" EntitySet="Stadia" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="StadiumPK" />
+          </Key>
+          <Property Name="StadiumPK" Type="Int32" Nullable="false" />
+          <Property Name="StadiumName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SeatMax" Type="Int32" />
+          <Property Name="HasDome" Type="Boolean" />
+          <Property Name="DateBuilt" Type="DateTime" Precision="0" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Teams" Relationship="KenGriffeyJrDbShipsModel.FK_Team_ToStadium" FromRole="Stadium" ToRole="Team" />
+        </EntityType>
+        <Association Name="FK_Team_ToStadium">
+          <End Type="KenGriffeyJrDbShipsModel.Stadium" Role="Stadium" Multiplicity="0..1" />
+          <End Type="KenGriffeyJrDbShipsModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadium">
+              <PropertyRef Name="StadiumPK" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="StadiumFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -324,10 +383,23 @@
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.Team">
               <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="StadiumFK" ColumnName="StadiumFK" />
                 <ScalarProperty Name="TeamPK" ColumnName="TeamPK" />
                 <ScalarProperty Name="TeamName" ColumnName="TeamName" />
                 <ScalarProperty Name="SalaryCap" ColumnName="SalaryCap" />
                 <ScalarProperty Name="LeagueFK" ColumnName="LeagueFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stadia">
+            <EntityTypeMapping TypeName="KenGriffeyJrDbShipsModel.Stadium">
+              <MappingFragment StoreEntitySet="Stadium">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="DateBuilt" ColumnName="DateBuilt" />
+                <ScalarProperty Name="HasDome" ColumnName="HasDome" />
+                <ScalarProperty Name="SeatMax" ColumnName="SeatMax" />
+                <ScalarProperty Name="StadiumName" ColumnName="StadiumName" />
+                <ScalarProperty Name="StadiumPK" ColumnName="StadiumPK" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
