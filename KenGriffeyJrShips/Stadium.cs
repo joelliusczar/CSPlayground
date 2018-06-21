@@ -12,26 +12,22 @@ namespace KenGriffeyJrShips
     using System;
     using System.Collections.Generic;
     
-    public partial class Team
+    public partial class Stadium
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Team()
+        public Stadium()
         {
-            this.Fans = new HashSet<Fan>();
-            this.Players = new HashSet<Player>();
+            this.Teams = new HashSet<Team>();
         }
     
-        public int TeamPK { get; set; }
-        public string TeamName { get; set; }
-        public Nullable<decimal> SalaryCap { get; set; }
-        public Nullable<int> LeagueFK { get; set; }
-        public Nullable<int> StadiumFK { get; set; }
+        public int StadiumPK { get; set; }
+        public string StadiumName { get; set; }
+        public Nullable<int> SeatMax { get; set; }
+        public Nullable<bool> HasDome { get; set; }
+        public Nullable<System.DateTime> DateBuilt { get; set; }
+        public string City { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fan> Fans { get; set; }
-        public virtual League League { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Player> Players { get; set; }
-        public virtual Stadium Stadium { get; set; }
+        public virtual ICollection<Team> Teams { get; set; }
     }
 }
