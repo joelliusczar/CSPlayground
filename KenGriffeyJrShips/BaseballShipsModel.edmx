@@ -42,7 +42,7 @@
           <Key>
             <PropertyRef Name="StadiumPK" />
           </Key>
-          <Property Name="StadiumPK" Type="int" Nullable="false" />
+          <Property Name="StadiumPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StadiumName" Type="varchar" MaxLength="200" />
           <Property Name="SeatMax" Type="int" />
           <Property Name="HasDome" Type="bit" />
