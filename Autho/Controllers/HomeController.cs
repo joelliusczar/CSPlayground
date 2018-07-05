@@ -78,6 +78,11 @@ namespace Autho.Controllers
             ;
         }
 
+        public void EmptyGet(int mt,string mts)
+        {
+            ;
+        }
+
         public void SplatBlitz()
         {
             ;

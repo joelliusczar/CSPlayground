@@ -17,10 +17,10 @@
     @Html.RadioButtonFor(m => m.SplatD, "", new { id = nameof(Model.PickedSplark) + "__" })
     @Html.Label(nameof(Model.SplatD) + "__", "Blank")
     <br />
-    foreach(var s in Model.Mixins.Zip(Model.AreSplattered,(s,b) => new {s,b}))
+    foreach (var s in Model.Mixins.Zip(Model.AreSplattered, (s, b) => new { s, b }))
     {
-        @Html.CheckBoxFor(m => s.b,new { id = nameof(Model.Mixins)+s.s})
-        @Html.Label(nameof(Model.Mixins) + s.s,s.s)
+        @Html.CheckBoxFor(m => s.b, new { id = nameof(Model.Mixins) + s.s })
+        @Html.Label(nameof(Model.Mixins) + s.s, s.s)
     }
 
     <button type="submit">Submit</button>
@@ -65,9 +65,28 @@
     var choices = new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } };
     choices.AddRange(Model.SplatChoices.Select(s => new SelectListItem { Text = s.SplatSoundDescription, Value = s.Id.ToString() }));
 
-    var selectChoices = new SelectList(choices );
+    var selectChoices = new SelectList(choices);
 
-    @Html.DropDownList("splatDb",choices)
-    @Html.DropDownListFor(m => m.PickedSplark,choices)
+    @Html.DropDownList("splatDb", choices)
+    @Html.DropDownListFor(m => m.PickedSplark, choices)
     <button type="submit">Drorpdown</button>
+}
+
+
+<div>Raw Url: @Request.RawUrl</div>
+<div>Url scheme: @Request.Url.GetLeftPart(UriPartial.Scheme)   </div>
+<div>Url path: @Request.Url.GetLeftPart(UriPartial.Path)   </div>
+<div>Url segments: @string.Join(" $ ", Request.Url.Segments.Reverse())  </div>
+<div>Url Original str: @Request.Url.OriginalString  </div>
+<div>Url local path: @Request.Url.LocalPath   </div>
+<div>Url absolute Uri: @Request.Url.AbsoluteUri </div>
+<div>Url application path: @Request.ApplicationPath  </div>
+<div>Raw Url: @Request.UrlReferrer </div>
+
+
+@using (Html.BeginForm(nameof(HomeController.EmptyGet), "Home", FormMethod.Get))
+{
+    @Html.Hidden("mt", "18")
+    @Html.Hidden("mts", "arrrr!@")
+    <button type="submit">Empty</button>
 }
